@@ -1,0 +1,123 @@
+{
+	"layer": "top",
+	"position": "top",
+
+	"modules-left": [
+                "custom/space",
+                "battery",
+		"sway/workspaces",
+	],
+	"modules-center": [
+                "custom/space",
+                "cpu",
+                "custom/runner",
+                "memory",
+	],
+	"modules-right": [
+                "pulseaudio",
+                "sway/language",
+                "clock",
+                "custom/space"
+	],
+
+        "custom/space": {
+                "format": " ",
+                "tooltip": "false"
+        },
+
+        "custom/runner": {
+                "format":"",
+                "on-click":"wofi --show drun --location top",
+        },
+
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"format": "{name}"
+	},
+
+        "custom/date": {
+                "format": "{}",
+                "exec": "date '+%I:%M %p %B %d'",
+                "interval": "1"
+        },
+
+        "clock": {
+                "format": "{:%B %d %I:%M %p} |  "
+        },
+
+	"pulseaudio": {
+		"format": "{icon} {volume:2}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-muted": "{icon} MUTE",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				""
+			]
+		},
+		"scroll-step": 5,
+		"on-click": "pamixer -t",
+		"on-click-right": "pavucontrol"
+	},
+
+        "network": {
+              "format-wifi": " ",
+              "format-ethernet": "",
+              "format-disconnected": "󱚼", 
+              "max-length": 30,
+              "on-click": "kitty -e 'nmtui'"
+        },
+
+        "sway/language": {
+                    "format": "  {short}",
+                    "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+        },
+
+	"memory": {
+		"interval": 1,
+		"format": "  {}%",
+                "on-click": "gnome-system-monitor" 
+	},
+	"cpu": {
+		"interval": 1,
+		"format": " {usage:2}%",
+                "on-click": "gnome-system-monitor"
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon}  | {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+
+        "mpris": {
+               "interval": 5,
+    	      "format": "{player_icon} {dynamic}",
+    	      "format-paused": "{status_icon} <i>{dynamic}</i>",
+    	      "dynamic-order": ["artist", "title"],
+               "default": "▶",
+               "spotify": ""
+        },
+
+        "custom/dnd": {
+                    "format": "  DND",
+                    "on-click": "makoctl dismiss -a && makoctl set-mode do-not-disturb",
+                    "tooltip": "Toggle Do Not Disturb"
+        },
+
+
+	"tray": {
+		"icon-size": 17,
+                "spacing": 7
+	}
+}

@@ -1,0 +1,106 @@
+/* ~/.config/waybar/style.css */
+
+* {
+	font-size: 18px;
+	font-family: monospace;
+}
+
+window#waybar {
+        background: transparent;
+	color: #fdf6e3;
+}
+
+#workspaces,
+#clock.1,
+#clock.2,
+#clock.3,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk,
+#tray,
+#network,
+#language,
+#clock {
+           background: #363a4f;
+           border-radius: 15px;
+           margin-left: 7px;
+           margin-right: 7px;
+           margin-top: 7px;
+           padding: 3px;
+}
+
+#custom-runner {
+           background: #363a4f;
+           border-radius: 15px;
+           margin-left: 7px;
+           margin-right: 7px;
+           margin-top: 7px;
+           padding-left: 10px;
+           padding-right: 12px;
+}
+
+#workspaces button {
+	padding: 0 5px;
+	color: #cad3f5;
+}
+#workspaces button.focused {
+        color: #8aadf4;
+        /* border-top: 2px solid #268bd2;*/
+}
+
+#pulseaudio {
+	color: #8aadf4;
+}
+#memory {
+	color: #a6da95;
+}
+#cpu {
+	color: #8aadf4;
+}
+#battery {
+	color: #a6da95;
+}
+
+#disk {
+	color: #a6da95;
+}
+
+#network {
+        color: #268bd2;
+}
+
+#language {
+         color: #a6da95;
+}
+
+#custom-runner {
+         color: #cad3f5;
+}
+
+#clock {
+         color: #b7bdf8;
+}
+
+#clock,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk,
+#network,
+#custom-dnd,
+#language {
+	padding: 0 10px;
+}
+
+#workspaces button:hover,
+#pulseaudio:hover,
+#cpu:hover,
+#memory:hover,
+#battery:hover,
+#clock:hover,
+#language:hover {
+    background: #494d64;
+}

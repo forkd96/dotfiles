@@ -1,0 +1,235 @@
+* {
+    outline: none;
+    font-family: "Segoe UI Variable Static Text";
+    font-size: 18px;
+    text-shadow: none;
+    color: @foreground;
+    background-color: transparent;
+    background: transparent;
+}
+
+.control-center {
+    background-color: #1e2030;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.65);
+    padding: 5px;
+    border-radius: 12px;
+    margin-top: 4px;
+    margin-right: 4px;
+}
+
+.control-center .notification-row .notification-background {
+    border-radius: 15px;
+    margin-top: 5px;
+}
+
+.notification {
+    background-color: #1e2030;
+    border-radius: 12px;
+    margin-top: 24px;
+    margin-right: 24px;
+}
+
+.notification > *:last-child > *  {
+    margin: 6px;
+}
+
+.summary { font-size: 1.1rem; padding-left: 15px; }
+.time { font-size: 0.8rem; }
+.body { font-size: 1rem; padding-left: 15px; }
+
+.notification-content {
+    padding: 15px 10px 10px 20px;
+}
+
+.notification-action > button {
+    padding: 6px;
+    margin: 6px;
+}
+.notification-action > label {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.notification.critical {
+    background-color: #1e2030;
+    border: 1.4px solid #ed8796;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
+}
+.notification.low,
+.notification.normal  {
+    background-color: #1e2030;
+    border: 1.4px solid #b8c0e0;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
+}
+
+.close-button {
+    background-color: #6e738d;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.35);
+    padding: 6px;
+    margin: 30px 30px 30px 30px;
+}
+.close-button:hover {
+    background-color: alpha(#ed8796, 0.8);
+}
+
+.notification-group-header,
+.notification-group-icon {
+    font-size: 0.9rem;
+}
+
+.notification-group-collapse-button,
+.notification-group-close-all-button {
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.35);
+    background-color: #6e738d;
+}
+
+.notification-group-collapse-button:hover {
+    background-color: alpha(#6e738d, 0.8);
+}
+.notification-group-close-all-button:hover {
+    background-color: alpha(#ed8796, 0.8);
+}
+
+trough highlight {
+    background: #8aadf4;
+}
+scale trough {
+    margin: 0rem 1rem;
+    background-color: #cad3f5;
+    min-height: 8px;
+    min-width: 70px;
+}
+slider {
+    background-color: #cad3f5;
+}
+tooltip {
+    background-color: #494d64;
+}
+
+/*** Widgets ***/
+/* Buttons widget */
+.widget-buttons-grid {
+    font-size: 1rem;
+    padding: 20px 20px 10px;
+    margin: unset;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button {
+    background: #5b6078;
+    box-shadow: 0px 0px 10px alpha(@background, 0.8);
+    border-radius: 12px;
+    min-width: 60px;
+    min-height: 30px;
+    padding: 6px;
+    margin: 0 3px 0;
+    transition: all .5s ease;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+    background: #8087a2;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+    background: #8aadf4;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked:hover {
+    background: alpha(#8aadf4, 0.8);
+}
+
+/* Mpris widget */
+@define-color mpris-album-art-overlay rgba(0, 0, 0, 0.55);
+@define-color mpris-button-hover rgba(0, 0, 0, 0.5);
+
+.widget-mpris .widget-mpris-player {
+    padding: 16px;
+    margin: 16px 20px;
+    background-color: @mpris-album-art-overlay;
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.65);
+}
+.widget-mpris .widget-mpris-player .widget-mpris-album-art {
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.65);
+}
+.widget-mpris .widget-mpris-player .widget-mpris-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0px 8px 8px 8px;
+}
+.widget-mpris .widget-mpris-player .widget-mpris-subtitle {
+    font-size: 1rem;
+}
+.widget-mpris .widget-mpris-player > box > button:hover {
+    background-color: #8087a2;
+}
+.widget-mpris > box > button:hover {
+    background: alpha(#8087a2, 0.6);
+}
+
+/* Volume widget */
+.widget-volume {
+    padding: 6px 5px 5px 5px;
+    margin: unset;
+    font-size: 1.3rem;
+}
+.widget-volume > box > button {
+    border: none;
+}
+.per-app-volume {
+    padding: 4px 8px 8px 8px;
+    margin: 0px 8px 8px 8px;
+}
+
+/* Backlight widget */
+.widget-backlight {
+    padding: 0 0 3px 16px;
+    margin: unset;
+    font-size: 1.1rem;
+}
+
+/* DND widget */
+.widget-dnd {
+    font-weight: bold;
+    margin: unset;
+    padding: 20px 15px 15px 15px;
+}
+.widget-dnd > switch {
+    font-size: initial;
+    border-radius: 100px;
+    background: #8087a2;
+    border: none;
+    box-shadow: none;
+    padding: 3px;
+}
+.widget-dnd > switch:checked {
+    background: #a6da95;
+}
+.widget-dnd > switch slider {
+    background: #1e2030;
+    border-radius: 12px;
+    min-width: 18px;
+    min-height: 18px;
+}
+
+/* Title widget */
+.widget-title {
+    padding: unset;
+    margin: unset;
+    font-weight: bold;
+    padding: 15px;
+}
+.widget-title > label {
+    font-size: 1.5rem;
+}
+.widget-title > button {
+    padding:unset;
+    margin:unset;
+    text-shadow: none;
+    background: #e64553;
+    border: none;
+    box-shadow: none;
+    border-radius: 100px;
+    padding:0px 6px;
+    transition: all .7s ease;
+}
+.widget-title > button:hover {
+    background: alpha(@red, 0.8);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.65);
+}

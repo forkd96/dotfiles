@@ -1,0 +1,108 @@
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": [
+    "custom/space",
+    "battery",
+    "niri/workspaces"
+  ],
+  "modules-center": [
+    "custom/space",
+    "cpu",
+    "custom/runner",
+    "memory"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "niri/language",
+    "clock",
+    "custom/space"
+  ],
+  "custom/space": {
+    "format": " ",
+    "tooltip": "false"
+  },
+  "custom/runner": {
+    "format": "",
+    "on-click": "rofi -show drun"
+  },
+  "niri/workspaces": {
+    "disable-scroll": true,
+    "format": "{name}",
+    "all-outputs": false
+  },
+  "custom/date": {
+    "format": "{}",
+    "exec": "date '+%I:%M %p %B %d'",
+    "interval": "1"
+  },
+  "clock": {
+    "format": "{:%B %d %I:%M %p} |  ",
+    "on-click": "swaync-client -t"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume:2}%",
+    "format-bluetooth": "{icon}  {volume}%",
+    "format-muted": "{icon} MUTE",
+    "format-icons": {
+      "headphones": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+  },
+  "network": {
+    "format-wifi": " ",
+    "format-ethernet": "",
+    "format-disconnected": "󱚼",
+    "max-length": 30,
+    "on-click": "nm-applet"
+  },
+  "niri/language": {
+    "format": "  {short}",
+    "on-click": "ydotool key 125:1 57:1 57:0 125:0"
+  },
+  "memory": {
+    "interval": 1,
+    "format": "  {}%",
+    "on-click": "gnome-system-monitor"
+  },
+  "cpu": {
+    "interval": 1,
+    "format": " {usage:2}%",
+    "on-click": "gnome-system-monitor"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}  | {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "mpris": {
+    "interval": 5,
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "dynamic-order": [
+      "artist",
+      "title"
+    ],
+    "default": "▶",
+    "spotify": ""
+  },
+  "tray": {
+    "icon-size": 17,
+    "spacing": 7
+  }
+}
