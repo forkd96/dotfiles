@@ -3,7 +3,7 @@
     # Default values
     highlight_color = "Blue"
     cursor = "█"
-    terminal_launcher = "alacritty -e"
+    terminal_launcher = "kitty"
     hard_stop = false
 
     # UI Customization

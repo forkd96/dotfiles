@@ -5,6 +5,7 @@
     packages = with pkgs; [
       hello
       kitty
+      ghostty
       eza
       bat
       kitty-themes

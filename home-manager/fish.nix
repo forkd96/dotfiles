@@ -13,6 +13,7 @@
       nv = "nvim";
       cfg = "sudo nvim /etc/nixos/nixos/configuration.nix";
       hcfg = "sudo nvim /etc/nixos/home-manager/";
+      rebuild = "sudo nixos-rebuild switch";
       ff = "fastfetch";
     };
     shellAliases = {
