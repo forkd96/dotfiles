@@ -1,0 +1,39 @@
+{ pkgs, ... }: {
+  programs.fish = {
+    enable = true;
+    package = pkgs.fish;
+    interactiveShellInit = "
+    set fish_greeting ''
+    set -gx TERM xterm-256color 
+     ";
+    shellAbbrs = {
+      nt = "nmtui";
+      bt = "bluetui";
+      b = "bat -l conf -p";
+      nv = "nvim";
+      cfg = "sudo nvim /etc/nixos/configuration.nix";
+      ff = "fastfetch";
+    };
+    shellAliases = {
+      ls = "eza --icons always";
+      faker = "~/.venv/bin/faker";
+    };
+    functions = {
+      mkcd = "mkdir -p $argv && cd $argv";
+    };
+      plugins = [
+    {
+      name = "z";
+      src = pkgs.fishPlugins.z.src;
+    }
+    {
+      name = "fzf-fish";
+      src = pkgs.fishPlugins.fzf-fish.src;
+    }
+    {
+      name = "tide";
+      src = pkgs.fishPlugins.tide.src;
+    }
+  ];
+  };
+}
