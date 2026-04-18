@@ -2,16 +2,17 @@
   programs.fish = {
     enable = true;
     package = pkgs.fish;
-    interactiveShellInit = "
-    set fish_greeting ''
+    interactiveShellInit = ''
+    set fish_greeting ""
     set -gx TERM xterm-256color 
-     ";
+     '';
     shellAbbrs = {
       nt = "nmtui";
       bt = "bluetui";
       b = "bat -l conf -p";
       nv = "nvim";
-      cfg = "sudo nvim /etc/nixos/configuration.nix";
+      cfg = "sudo nvim /etc/nixos/nixos/configuration.nix";
+      hcfg = "sudo nvim /etc/nixos/home-manager/";
       ff = "fastfetch";
     };
     shellAliases = {

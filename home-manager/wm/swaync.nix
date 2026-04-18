@@ -1,6 +1,7 @@
 { ... }: {
   services.swaync = {
-    enable = false;
+    # uncomment this if you're gonna use the rice, i already switched to plasma so i don't really need another daemon
+    # enable = true;
     settings = {
       positionX = "right";
       positionY = "top";
