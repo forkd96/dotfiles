@@ -2,12 +2,7 @@
 
 # Fork's shitty dotfiles
 
-**I updated the dotfiles and made them a bit more minimal, if you want a more modern look please check out the old [repo on github](https://github.com/forkd96/dotfiles)**
-
 </div>
-
-\
-**Hi there!** These are the dotfiles i daily drive
 
 ## Details
 ### Desktop
