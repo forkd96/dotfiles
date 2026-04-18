@@ -9,7 +9,9 @@
       eza
       bat
       kitty-themes
-      fastfetch 
+      fastfetch
+      gpu-screen-recorder
+      awww
 
       prismlauncher
       easyeffects
