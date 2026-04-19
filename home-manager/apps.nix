@@ -11,6 +11,7 @@
       kitty-themes
       gpu-screen-recorder
       awww
+      fsel
 
       prismlauncher
       easyeffects
