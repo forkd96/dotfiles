@@ -91,6 +91,7 @@
 
   boot.supportedFilesystems = [ "ntfs" ];
 
+  programs.niri.enable = true;
   environment.systemPackages = with pkgs; [
     neovim
     tree
@@ -100,7 +101,6 @@
     bluetui
     gnumake
     cmake
-    niri
     swaynotificationcenter
     p7zip
     btop
@@ -123,6 +123,12 @@
     jdk21
     jdk25
   ];
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

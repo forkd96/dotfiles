@@ -1,5 +1,5 @@
 .PHONY: switch
-update:
+switch:
 	sudo nixos-rebuild switch
 .PHONY: clean
 clean:
