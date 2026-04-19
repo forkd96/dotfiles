@@ -9,7 +9,6 @@
       eza
       bat
       kitty-themes
-      fastfetch
       gpu-screen-recorder
       awww
 

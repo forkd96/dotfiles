@@ -16,8 +16,8 @@
         "modules-right" = [
           "pulseaudio"
           "niri/language"
+	  "battery"
           "clock"
-          "battery"
         ];
         "custom/space" = {
           "format" = " ";
@@ -111,68 +111,54 @@
     style = ''
       /* ~/.config/waybar/style.css */
 
-      * {
-            font-size: 18px;
-            font-family: "JetBrainsMono Nerd Font", monospace;
-            border: none;
-            border-radius: 0;
-            min-height: 0;
-            margin: 0;
-            padding: 0;
-      }
+* {
+	font-size: 18px;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+}
 
-      window#waybar {
-            background: #1e1e2e;
-            color: #fdf6e3;
-            margin: 0;
-            padding: 0;
-      }
+window#waybar {
+        background: transparent;
+	color: #fdf6e3;
+}
 
-      #workspaces,
-      #clock.1,
-      #clock.2,
-      #clock.3,
-      #pulseaudio,
-      #memory,
-      #cpu,
-      #battery,
-      #disk,
-      #tray,
-      #network,
-      #language,
-      #clock {
-            background: #1e1e2e;
-            margin-top: 0;
-            margin-bottom: 0;
-            padding: 0;
-      }
+#workspaces,
+#clock.1,
+#clock.2,
+#clock.3,
+#pulseaudio,
+#cpu,
+#memory,
+#battery,
+#disk,
+#tray,
+#network,
+#language,
+#clock {
+           background: #363a4f;
+           border-radius: 15px;
+           margin-left: 7px;
+           margin-right: 7px;
+           margin-top: 7px;
+           padding: 3px;
+}
 
-      #clock.1,
-      #clock.2,
-      #clock.3,
-      #pulseaudio,
-      #memory,
-      #cpu,
-      #battery,
-      #disk,
-      #tray,
-      #network,
-      #language,
-      #clock {
-            margin: 0;
-            min-height: 32px;
-      }
+#custom-runner {
+           background: #363a4f;
+           border-radius: 15px;
+           margin-left: 7px;
+           margin-right: 7px;
+           margin-top: 7px;
+           padding-left: 10px;
+           padding-right: 12px;
+}
 
-      #custom-runner {
-            background: #1e1e2e;
-            margin-left: 7px;
-            margin-right: 7px;
-            padding-left: 10px;
-            padding-right: 12px;
-      }
+#workspaces button {
+	padding: 0 5px;
+	color: #cad3f5;
+}
 
       #workspaces button label {
-            padding: 0 20px;
+            padding: 0 7px;
             margin-right: 5px;
             color: #cad3f5;
       }
@@ -189,68 +175,62 @@
             background: #313244;
       }
 
-      #workspaces {
-            margin-left: 13px;
-      }
+#workspaces {
+        margin-left: 13px;
+}
 
-      #pulseaudio {
-            color: #8aadf4;
-            box-shadow: inset 0 -2px 0 #8aadf4;
-      }
+#workspaces button.focused {
+        color: #8aadf4;
+        /* border-top: 2px solid #268bd2;*/
+}
 
-      #memory {
-            color: #eed49f;
-            box-shadow: inset 0 -2px 0 #eed49f;
-      }
+#pulseaudio {
+	color: #8aadf4;
+}
+#memory {
+	color: #eed49f;
+}
+#cpu {
+	color: #ee99a0;
+}
+#battery {
+	color: #a6da95;
+}
 
-      #cpu {
-            color: #ee99a0;
-            box-shadow: inset 0 -2px 0 #ee99a0;
-      }
+#language {
+         color: #a6da95;
+}
 
-      #battery {
-            color: #a6da95;
-            box-shadow: inset 0 -2px 0 #a6da95;
-            margin-right: 13px;
-      }
+#custom-runner {
+         color: #cad3f5;
+}
 
-      #language {
-            color: #f5a97f;
-            box-shadow: inset 0 -2px 0 #f5a97f;
-      }
+#clock {
+         color: #b7bdf8;
+	 margin-right: 13px;
+}
 
-      #custom-runner {
-            color: #cad3f5;
-            box-shadow: inset 0 -2px 0 #cad3f5;
-      }
+#clock,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk,
+#network,
+#custom-dnd,
+#language {
+	padding: 0 10px;
+}
 
-      #clock {
-            color: #b7bdf8;
-            box-shadow: inset 0 -2px 0 #b7bdf8;
-      }
-
-      #clock,
-      #pulseaudio,
-      #memory,
-      #cpu,
-      #battery,
-      #disk,
-      #network,
-      #custom-dnd,
-      #language {
-            padding: 0 10px;
-      }
-
-      #workspaces button:hover,
-      #pulseaudio:hover,
-      #cpu:hover,
-      #memory:hover,
-      #battery:hover,
-      #clock:hover,
-      #language:hover {
-            background: #24273a;
-            border: 0;
-      }
+#workspaces button:hover,
+#pulseaudio:hover,
+#cpu:hover,
+#memory:hover,
+#battery:hover,
+#clock:hover,
+#language:hover {
+    background: #494d64;
+}
     '';
   };
 }
