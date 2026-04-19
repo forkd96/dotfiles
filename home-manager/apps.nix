@@ -20,7 +20,6 @@
       lutris
       obs-studio
       qbittorrent
-      steam
       vscodium
       cinny
 

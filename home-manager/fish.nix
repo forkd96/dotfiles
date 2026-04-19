@@ -3,6 +3,7 @@
     enable = true;
     package = pkgs.fish;
     interactiveShellInit = ''
+    fastfetch
     set fish_greeting ""
     set -gx TERM xterm-256color 
      '';

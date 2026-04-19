@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   programs.waybar = {
     enable = true;
 
@@ -18,7 +18,7 @@
         };
 
         "custom/runner" = {
-          format   = "";
+          format   = "";
           on-click = "rofi -show drun";
         };
 
@@ -35,7 +35,7 @@
         };
 
         clock = {
-          format = "{:%B %d %I:%M %p} |  ";
+          format = "{:%B %d %I:%M %p} |  ";
         };
 
         pulseaudio = {
@@ -43,16 +43,16 @@
           format-bluetooth = "{icon}  {volume}%";
           format-muted     = "{icon} MUTE";
           format-icons = {
-            headphones = "";
-            default    = [ "" "" ];
+            headphones = "";
+            default    = [ "" "" ];
           };
           scroll-step = 5;
           on-click    = "pavucontrol";
         };
 
         network = {
-          format-wifi        = " ";
-          format-ethernet    = "";
+          format-wifi        = " ";
+          format-ethernet    = "";
           format-disconnected = "󱚼";
           max-length         = 30;
           on-click           = "nm-applet";
@@ -60,18 +60,18 @@
 
         memory = {
           interval = 1;
-          format   = "  {}%";
+          format   = "  {}%";
           on-click = "gnome-system-monitor";
         };
 
         cpu = {
           interval = 1;
-          format   = " {usage}%";
+          format   = " {usage}%";
           on-click = "gnome-system-monitor";
         };
 
         "niri/language" = {
-          format   = "  {short}";
+          format   = "  {short}";
           on-click = "ydotool key 125 =1 57 =1 57 =0 125 =0";
         };
 
@@ -83,7 +83,7 @@
           };
           format         = "{icon} ";
           tooltip-format = "{capacity}%";
-          format-icons   = [ "" "" "" "" "" ];
+          format-icons   = [ "" "" "" "" "" ];
         };
 
         mpris = {
@@ -105,7 +105,7 @@
     style = ''
       * {
         font-size:   18px;
-        font-family: "JetBrainsMono Nerd Font", monospace;
+        font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font Mono", monospace;
       }
 
       window#waybar {

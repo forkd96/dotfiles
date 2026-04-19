@@ -66,6 +66,17 @@
     pulse.enable = true;
   };
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = [ pkgs.intel-media-driver pkgs.intel-vaapi-driver ];
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+  };
+
   services.libinput.enable = true;
 
   programs.fish.enable = true;
@@ -80,6 +91,7 @@
   fonts = {
     packages = with pkgs; [
       pkgs.nerd-fonts.jetbrains-mono
+      pkgs.nerd-fonts.symbols-only
     ];
   };
 
@@ -93,6 +105,7 @@
 
   programs.niri.enable = true;
   environment.systemPackages = with pkgs; [
+    python3
     neovim
     tree
     wget
