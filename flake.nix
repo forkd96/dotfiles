@@ -30,12 +30,18 @@
       inputs.systems.follows = "systems";
       inputs.flake-parts.follows = "flake-parts";
     };
+
+    # --- matugen ---
+    matugen = {
+      url = "github:/InioX/Matugen";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, otter-launcher, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, nixvim, otter-launcher, ... }: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
       modules = [
         ./nixos/configuration.nix
         home-manager.nixosModules.home-manager
@@ -47,6 +53,7 @@
             otter-launcher.homeModules.default
           ];
           home-manager.users.forkd = import ./home-manager;
+	  home-manager.extraSpecialArgs = { inherit inputs; };
         }
       ];
     };

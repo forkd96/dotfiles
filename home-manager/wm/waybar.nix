@@ -12,14 +12,9 @@
         modules-center = [ "cpu" "memory" ];
         modules-right  = [ "pulseaudio" "niri/language" "battery" "clock" ];
 
-        "custom/space" = {
-          format  = " ";
-          tooltip = "false";
-        };
-
         "custom/runner" = {
           format   = "";
-          on-click = "rofi -show drun";
+          on-click = "otter-launcher";
         };
 
         "niri/workspaces" = {

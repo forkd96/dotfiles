@@ -1,8 +1,9 @@
-{ pkgs, pkgs-stable, ... }:
+{ pkgs, pkgs-stable, inputs, ... }:
 
 { 
   home = {
     packages = with pkgs; [
+      inputs.matugen.packages.${system}.default
       hello
       kitty
       ghostty
@@ -22,6 +23,7 @@
       qbittorrent
       vscodium
       cinny
+      krita
 
       catppuccin-kde
       catppuccin-qt5ct

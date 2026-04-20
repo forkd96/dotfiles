@@ -30,12 +30,14 @@
     }
 
     spawn-sh-at-startup "matuwall --daemon"
-    spawn-at-startup "waybar" "--config" "${config.xdg.configHome}/waybar/config"
+    spawn-at-startup "waybar" "--config" "${config.xdg.configHome}/waybar/config" "--style" "${config.xdg.configHome}/waybar/style.css"
+    // spawn-at-startup "qs"
     spawn-at-startup "ydotoold"
     spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
     spawn-at-startup "swaync"
     spawn-at-startup "awww-daemon"
     spawn-sh-at-startup "gsr-ui launch-daemon"
+    spawn-at-startup "kitty"
 
     layout {
         gaps 14
