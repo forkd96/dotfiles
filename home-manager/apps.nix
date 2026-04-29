@@ -13,17 +13,25 @@
       gpu-screen-recorder
       awww
       fsel
+      wlogout
 
       prismlauncher
       easyeffects
       gajim
+      kdePackages.kdeconnect-kde
       librewolf
       lutris
+      heroic
       obs-studio
       qbittorrent
+      nicotine-plus
       vscodium
       cinny
       krita
+      vlc
+      redact
+      feishin
+      insomnia
 
       catppuccin-kde
       catppuccin-qt5ct

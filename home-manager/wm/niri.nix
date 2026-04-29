@@ -1,5 +1,6 @@
 { config, ... }: {
   xdg.configFile."niri/config.kdl".text = ''
+    include "./colors.kdl"
     // --- input ---
     input {
         keyboard {
@@ -30,14 +31,21 @@
     }
 
     spawn-sh-at-startup "matuwall --daemon"
-    spawn-at-startup "waybar" "--config" "${config.xdg.configHome}/waybar/config" "--style" "${config.xdg.configHome}/waybar/style.css"
-    // spawn-at-startup "qs"
+    spawn-at-startup "waybar" 
     spawn-at-startup "ydotoold"
     spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
     spawn-at-startup "swaync"
     spawn-at-startup "awww-daemon"
     spawn-sh-at-startup "gsr-ui launch-daemon"
     spawn-at-startup "kitty"
+
+    overview {
+      zoom 0.70
+      backdrop-color "#24273a"
+      workspace-shadow {
+        off
+      }
+    }
 
     layout {
         gaps 14
@@ -52,11 +60,12 @@
 
         default-column-width { proportion 0.5; }
 
+        background-color "transparent"
         focus-ring {
-            width 2
-            active-color "#b7bdf8"
-            inactive-color "#6e738d"
-            urgent-color "#fcb167"
+	    width 2
+        //    active-color "#b7bdf8"
+        //    inactive-color "#6e738d"
+        //    urgent-color "#fcb167"
         }
 
         border {
@@ -74,7 +83,7 @@
             spread 5
             offset x=0 y=5
             color "#0007"
-        }
+        }	
 
         struts {
             // left 64
@@ -133,7 +142,7 @@
     }
 
     window-rule {
-        geometry-corner-radius 4
+        geometry-corner-radius 6
         clip-to-geometry true
     }
 

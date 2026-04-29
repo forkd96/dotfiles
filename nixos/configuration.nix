@@ -21,6 +21,7 @@
   networking.hostName = "nixos";
 
   networking.networkmanager.enable = true;
+  networking.enableIPv6 = false;
   networking.firewall.checkReversePath = "loose"; # tailscale exit nodes fix
   services.tailscale.useRoutingFeatures = "client";
 
@@ -49,6 +50,11 @@
   # comment this if you don't use KDE
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+
+  services.xserver.desktopManager.xfce = {
+    enable = true;
+    enableWaylandSession = true;
+  };
 
   services.xserver.xkb = {
     layout = "us";
@@ -88,6 +94,14 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
+  services.logind = {
+    lidSwitch = "ignore";
+    settings.Login = {
+      IdleAction = "ignore";
+      IdleActionSec = 0;
+    };
+  };
+
   fonts = {
     packages = with pkgs; [
       pkgs.nerd-fonts.jetbrains-mono
@@ -96,13 +110,53 @@
     ];
   };
 
-  services.tailscale.enable = true;
+  # services.tailscale.enable = true;
+  programs.amnezia-vpn.enable = true;
+
+  services.slskd = {
+    enable = true;
+    environmentFile = "/etc/slskd/env";
+    settings = {
+      directories = {
+        downloads = "/etc/slskd/downloads";
+	incomplete = "/etc/slskd/downloads/incomplete";
+      };
+    };
+  };
+
+  services.navidrome = {
+    enable = true;
+    settings = {
+      MusicFolder = "/opt/navidrome/music";
+      PlaylistsPath = "/opt/navidrome/playlists";
+      EnableSharing = true;
+    };
+  };
 
   programs.firefox.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
   boot.supportedFilesystems = [ "ntfs" ];
+
+#  services.minecraft-server = {
+#    enable = true;
+#    eula = true;
+#    openFirewall = true;
+#    package = pkgs.papermcServers.papermc-1_21_11;
+#    serverProperties = {
+#      difficulty = 2;
+#      gamemode = 0;
+#      max-players = 3;
+#      enable-rcon = true;
+#      "rcon.password" = "fuckinghell";
+#      white-list = true;
+#      motd = "super cool local server";
+#    };
+#    whitelist = {
+#      forkd_owo = "9993ba3a-9b23-4029-bcd5-7d15a978ec71";
+#    };
+#  };
 
   programs.niri.enable = true;
   programs.hyprland.enable = true; # temporary for learning QS... proooobably...
@@ -142,6 +196,9 @@
     traceroute
     jdk21
     jdk25
+    nodejs_22
+    docker
+    docker-compose
   ];
 
   nix.gc = {

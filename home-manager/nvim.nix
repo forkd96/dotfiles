@@ -31,6 +31,12 @@
           require('nvim-tree.api').tree.open()
         end;
       })
+
+     require('lualine').setup({
+        options = {
+          theme = "base16",
+        }
+      })
     '';
 
     extraPackages = with pkgs; [

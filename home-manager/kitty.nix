@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   programs.kitty = {
     enable = true;
     themeFile = "Catppuccin-Macchiato";
@@ -18,14 +18,10 @@
       window_padding_width 4
       selection_foreground none
       selection_background none
-      
-      tab_bar_min_tabs            1
-      tab_bar_edge                bottom
-      tab_bar_style               powerline
-      tab_powerline_style         slanted
-      tab_title_template          {title}{'  ={} ='.format(num_windows) if num_windows > 1 else ''}
-      hide_window_decorations no
 
+      background_opacity 1
+      background_blur 1
+      
       mouse_map alt+left press ungrabbed mouse_selection rectangle";
   };
 }
