@@ -12,7 +12,6 @@
       nvim-tree.enable = true;
       web-devicons.enable = true;
       luasnip.enable = true;
-      presence.enable = true;
       # nvim-cmp.enable = true;
     };
 

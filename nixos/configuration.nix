@@ -95,10 +95,10 @@
   };
 
   services.logind = {
-    lidSwitch = "ignore";
     settings.Login = {
       IdleAction = "ignore";
       IdleActionSec = 0;
+      HandleLidSwitch = "ignore";
     };
   };
 

@@ -20,14 +20,12 @@
       gajim
       kdePackages.kdeconnect-kde
       librewolf
-      lutris
       heroic
       obs-studio
       qbittorrent
       nicotine-plus
       vscodium
       cinny
-      krita
       vlc
       redact
       feishin
