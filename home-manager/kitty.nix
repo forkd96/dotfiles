@@ -1,7 +1,7 @@
 { config, ... }: {
   programs.kitty = {
     enable = true;
-    themeFile = "Catppuccin-Macchiato";
+    #themeFile = "Catppuccin-Macchiato";
     font = {
       name = "JetBrainsMono Nerd Font";
       size = 12;
@@ -10,6 +10,7 @@
       enableFishIntegration = true;
     };
     extraConfig = "
+      include ${config.xdg.configHome}/kitty/current-theme.conf
       confirm_os_window_close 0
       cursor_trail 1
       scrollback_lines 2000

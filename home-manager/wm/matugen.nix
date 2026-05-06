@@ -13,10 +13,20 @@
     output_path = "${config.xdg.configHome}/waybar/colors.css"
     post_hook = "pkill -SIGUSR2 waybar"
 
+    [templates.swaync]
+    input_path = "${config.xdg.configHome}/matugen/templates/colors.css"
+    output_path = "${config.xdg.configHome}/swaync/colors.css"
+    post_hook = "swaync-client -rs"
+
+    [templates.matuwall]
+    input_path = '${config.xdg.configHome}/matugen/templates/matuwall-colors.json'
+    output_path = '${config.xdg.configHome}/matuwall/colors.json'
+
+    # no matter what scheme, saturation, color overrides or templates i use it always ends up generating straight bullshit, i don't really wanna babysit it, feel free to open a pr if you have a good template tho
     [templates.kitty]
     input_path = "${config.xdg.configHome}/matugen/templates/kitty-colors.conf"
-    output_path = "${config.xdg.configHome}/kitty/themes/Matugen.conf"
-    post_hook = "kitty +kitten themes --config-file-name theme.conf --reload-in=all Matugen"
+    output_path = "${config.xdg.configHome}/kitty/current-theme.conf"
+    post_hook = "pkill -USR1 kitty"
     
     [templates.qt5ct]
     input_path = "${config.xdg.configHome}/matugen/templates/qtct-colors.conf"
@@ -45,6 +55,10 @@
     input_path = "${config.xdg.configHome}/matugen/templates/cava-colors.ini"
     output_path = "${config.xdg.configHome}/cava/colors.ini"
     post_hook = "pkill -USR1 cava"
+
+    [templates.wlogout]
+    input_path = '${config.xdg.configHome}/matugen/templates/colors.css'
+    output_path = '${config.xdg.configHome}/wlogout/colors.css'
 '';
 
   xdg.configFile."matugen/templates/colors.css".text = ''

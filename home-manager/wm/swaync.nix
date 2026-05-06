@@ -10,8 +10,8 @@
       control-center-layer = "top";
       layer-shell = true;
     
-      control-center-width = 400;
-      control-center-height = 850;
+      control-center-width = 390;
+      control-center-height = 750;
       control-center-margin-top = 10;
       control-center-margin-bottom = 10;
       control-center-margin-right = 10;
@@ -60,8 +60,8 @@
         };
         volume = {
           label = " 󰕾 ";
-          expand-button-label = " ";
-          collapse-button-label = " ";
+          expand-button-label = " ";
+          collapse-button-label = " ";
           show-per-app = true;
           show-per-app-icon = true;
           show-per-app-label = false;
@@ -80,7 +80,7 @@
         buttons-grid = {
           actions = [
             {
-              label = " ";
+              label = " ";
               type = "toggle";
               active = true;
               command = "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'";
@@ -94,14 +94,14 @@
               update-command = "sh -c \"rfkill list bluetooth | grep -q \\\"Soft blocked: no\\\" && echo true || echo false\"";
             }
             {
-              label = " ";
+              label = " ";
               type = "toggle";
               active = false;
               command = "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && pactl set-source-mute @DEFAULT_SOURCE@ 1 || pactl set-source-mute @DEFAULT_SOURCE@ 0'";
               update-command = "sh -c '[[ $(pactl get-source-mute @DEFAULT_SOURCE@) == *yes* ]] && echo true || echo false'";
             }
             {
-              label = " ";
+              label = " ";
               type = "toggle";
               active = false;
               command = "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && pactl set-sink-mute @DEFAULT_SINK@ 1 || pactl set-sink-mute @DEFAULT_SINK@ 0'";
@@ -112,240 +112,352 @@
       };
     };
     style = ''
+      @import "colors.css";
+    
+      @define-color cc_bg @surface_container_low;
+      @define-color cc_bg_alt @surface_container;
+      @define-color cc_fg @on_surface;
+      @define-color cc_fg_muted @on_surface_variant;
+      @define-color cc_border @outline_variant;
+      @define-color cc_accent @primary;
+      @define-color cc_accent_fg @on_primary;
+      @define-color cc_danger @error_container;
+      @define-color cc_danger_fg @on_error_container;
+    
       * {
           outline: none;
-          font-family: "Segoe UI Variable Static Text";
-          font-size: 18px;
+          border: none;
+          font-family: "Poppins", "Symbols Nerd Font";
+          font-size: 15px;
           text-shadow: none;
-          color: @foreground;
+          color: @cc_fg;
           background-color: transparent;
           background: transparent;
       }
-      
+    
       .control-center {
-          background-color: #1e2030;
-          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.65);
-          padding: 5px;
-          border-radius: 12px;
+          background-color: alpha(@cc_bg, 0.97);
+          color: @cc_fg;
+          border: 1px solid alpha(@cc_border, 0.7);
+          box-shadow: 0 8px 24px alpha(#000000, 0.35);
+          padding: 8px;
+          border-radius: 16px;
           margin-top: 4px;
           margin-right: 4px;
       }
-      
+    
       .control-center .notification-row .notification-background {
-          border-radius: 15px;
+          border-radius: 14px;
           margin-top: 5px;
       }
-      
+    
       .notification {
-          background-color: #1e2030;
-          border-radius: 12px;
-          margin-top: 24px;
-          margin-right: 24px;
+          background-color: @cc_bg_alt;
+          color: @cc_fg;
+          border-radius: 14px;
+          border: 1px solid alpha(@cc_border, 0.7);
+          margin-top: 10px;
+          margin-right: 10px;
       }
-      
+    
       .notification > *:last-child > *  {
           margin: 6px;
       }
-      
-      .summary { font-size: 1.1rem; padding-left: 15px; }
-      .time { font-size: 0.8rem; }
-      .body { font-size: 1rem; padding-left: 15px; }
-      
-      .notification-content {
-          padding: 15px 10px 10px 20px;
+    
+      .summary,
+      .body,
+      .widget-title > label,
+      .widget-dnd > label,
+      .widget-backlight > label,
+      .widget-volume label,
+      .widget-mpris .widget-mpris-title {
+          color: @cc_fg;
       }
-      
+    
+      .time,
+      .widget-mpris .widget-mpris-subtitle,
+      .notification-group-header,
+      .notification-group-icon {
+          color: @cc_fg_muted;
+      }
+    
+      .summary {
+          font-size: 1.02rem;
+          padding-left: 12px;
+      }
+    
+      .time {
+          font-size: 0.8rem;
+      }
+    
+      .body {
+          font-size: 0.95rem;
+          padding-left: 12px;
+      }
+    
+      .notification-content {
+          padding: 12px 12px 10px 14px;
+      }
+    
       .notification-action > button {
           padding: 6px;
           margin: 6px;
       }
+    
       .notification-action > label {
-          font-size: 1rem;
+          font-size: 0.95rem;
           font-weight: normal;
+          color: @cc_fg;
       }
-      
+    
       .notification.critical {
-          background-color: #1e2030;
-          border: 1.4px solid #ed8796;
-          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
+          background-color: alpha(@cc_danger, 0.95);
+          border: 1.4px solid @error;
+          box-shadow: 0 0 5px 0 alpha(#000000, 0.45);
+          color: @cc_danger_fg;
       }
+    
       .notification.low,
-      .notification.normal  {
-          background-color: #1e2030;
-          border: 1.4px solid #b8c0e0;
-          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
+      .notification.normal {
+          background-color: @cc_bg_alt;
+          border: 1.4px solid @cc_border;
+          box-shadow: 0 0 5px 0 alpha(#000000, 0.25);
       }
-      
+    
       .close-button {
-          background-color: #6e738d;
-          box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.35);
+          background-color: @surface_container_highest;
+          color: @cc_fg;
+          box-shadow: 0 0 3px 0 alpha(#000000, 0.25);
           padding: 6px;
-          margin: 30px 30px 30px 30px;
+          margin: 18px;
+          border-radius: 999px;
       }
+    
       .close-button:hover {
-          background-color: alpha(#ed8796, 0.8);
+          background-color: alpha(@error, 0.85);
+          color: @on_error;
       }
-      
+    
       .notification-group-header,
       .notification-group-icon {
           font-size: 0.9rem;
       }
-      
+    
       .notification-group-collapse-button,
       .notification-group-close-all-button {
-          box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.35);
-          background-color: #6e738d;
+          box-shadow: 0 0 3px 0 alpha(#000000, 0.25);
+          background-color: @surface_container_highest;
+          color: @cc_fg;
       }
-      
+    
       .notification-group-collapse-button:hover {
-          background-color: alpha(#6e738d, 0.8);
+          background-color: alpha(@surface_container_highest, 0.85);
       }
+    
       .notification-group-close-all-button:hover {
-          background-color: alpha(#ed8796, 0.8);
+          background-color: alpha(@error, 0.85);
+          color: @on_error;
       }
-      
+    
       trough highlight {
-          background: #8aadf4;
+          background: @cc_accent;
       }
+    
       scale trough {
           margin: 0rem 1rem;
-          background-color: #cad3f5;
+          background-color: @cc_border;
           min-height: 8px;
           min-width: 70px;
+          border-radius: 999px;
       }
+    
       slider {
-          background-color: #cad3f5;
+          background-color: @cc_border;
       }
+    
       tooltip {
-          background-color: #494d64;
+          background-color: @inverse_surface;
+          color: @inverse_on_surface;
+          border-radius: 10px;
       }
-      
+    
+      scrollbar,
+      scrollbar trough,
+      scrollbar slider {
+          background: transparent;
+      }
+    
+      scrollbar {
+          min-width: 8px;
+          margin: 6px 2px 6px 0;
+      }
+    
+      scrollbar trough {
+          margin: 0;
+      }
+    
+      scrollbar slider {
+          min-width: 4px;
+          min-height: 36px;
+          border-radius: 999px;
+          background-color: alpha(@cc_fg_muted, 0.35);
+      }
+    
+      scrollbar slider:hover {
+          background-color: alpha(@cc_fg_muted, 0.55);
+      }
+    
       /*** Widgets ***/
-      /* Buttons widget */
       .widget-buttons-grid {
           font-size: 1rem;
-          padding: 20px 20px 10px;
+          padding: 14px 14px 8px;
           margin: unset;
       }
+    
       .widget-buttons-grid > flowbox > flowboxchild > button {
-          background: #5b6078;
-          box-shadow: 0px 0px 10px alpha(@background, 0.8);
+          background: @surface_container_high;
+          color: @cc_fg;
+          box-shadow: 0px 0px 10px alpha(@background, 0.4);
           border-radius: 12px;
-          min-width: 60px;
-          min-height: 30px;
+          min-width: 56px;
+          min-height: 32px;
           padding: 6px;
-          margin: 0 3px 0;
-          transition: all .5s ease;
+          margin: 0 3px;
+          transition: all .2s ease;
       }
+    
       .widget-buttons-grid > flowbox > flowboxchild > button:hover {
-          background: #8087a2;
+          background: @surface_container_highest;
       }
+    
       .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
-          background: #8aadf4;
+          background: @primary_container;
+          color: @on_primary_container;
       }
+    
       .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked:hover {
-          background: alpha(#8aadf4, 0.8);
+          background: alpha(@primary_container, 0.85);
       }
-      
-      /* Mpris widget */
-      @define-color mpris-album-art-overlay rgba(0, 0, 0, 0.55);
-      @define-color mpris-button-hover rgba(0, 0, 0, 0.5);
-      
+    
+      @define-color mpris-album-art-overlay rgba(0, 0, 0, 0.42);
+      @define-color mpris-button-hover rgba(0, 0, 0, 0.25);
+    
       .widget-mpris .widget-mpris-player {
-          padding: 16px;
-          margin: 16px 20px;
-          background-color: @mpris-album-art-overlay;
-          border-radius: 12px;
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.65);
+          padding: 14px;
+          margin: 14px 18px;
+          background-color: alpha(@surface_container_highest, 0.88);
+          border-radius: 14px;
+          border: 1px solid alpha(@outline_variant, 0.6);
+          box-shadow: 0px 0px 10px alpha(#000000, 0.35);
       }
+    
       .widget-mpris .widget-mpris-player .widget-mpris-album-art {
           border-radius: 12px;
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.65);
+          box-shadow: 0px 0px 10px alpha(#000000, 0.35);
       }
+    
       .widget-mpris .widget-mpris-player .widget-mpris-title {
           font-weight: bold;
-          font-size: 1.2rem;
-          margin: 0px 8px 8px 8px;
+          font-size: 1.1rem;
+          margin: 0px 8px 6px 8px;
+          color: @cc_fg;
       }
+    
       .widget-mpris .widget-mpris-player .widget-mpris-subtitle {
-          font-size: 1rem;
+          font-size: 0.95rem;
+          color: @cc_fg_muted;
       }
+    
       .widget-mpris .widget-mpris-player > box > button:hover {
-          background-color: #8087a2;
+          background-color: @surface_container_highest;
       }
+    
       .widget-mpris > box > button:hover {
-          background: alpha(#8087a2, 0.6);
+          background: alpha(@surface_container_highest, 0.6);
       }
-      
-      /* Volume widget */
+    
       .widget-volume {
-          padding: 6px 5px 5px 5px;
+          padding: 4px 5px 5px 5px;
           margin: unset;
-          font-size: 1.3rem;
+          font-size: 1.15rem;
+          color: @cc_fg;
       }
+    
       .widget-volume > box > button {
           border: none;
+          color: @cc_fg;
       }
+    
       .per-app-volume {
           padding: 4px 8px 8px 8px;
           margin: 0px 8px 8px 8px;
       }
-      
-      /* Backlight widget */
+    
       .widget-backlight {
           padding: 0 0 3px 16px;
           margin: unset;
-          font-size: 1.1rem;
+          font-size: 1.05rem;
+          color: @cc_fg;
       }
-      
-      /* DND widget */
+    
       .widget-dnd {
           font-weight: bold;
           margin: unset;
-          padding: 20px 15px 15px 15px;
+          padding: 14px 15px 12px 15px;
+          color: @cc_fg;
       }
+    
       .widget-dnd > switch {
           font-size: initial;
-          border-radius: 100px;
-          background: #8087a2;
+          border-radius: 999px;
+          background: @surface_container_highest;
           border: none;
           box-shadow: none;
           padding: 3px;
       }
+    
       .widget-dnd > switch:checked {
-          background: #a6da95;
+          background: @cc_accent;
       }
+
+      .widget-dnd > switch:not(:checked) slider {
+          background: @on_surface;
+      }
+    
       .widget-dnd > switch slider {
-          background: #1e2030;
-          border-radius: 12px;
+          background: @on_primary;
+          border-radius: 999px;
           min-width: 18px;
           min-height: 18px;
       }
-      
-      /* Title widget */
+    
       .widget-title {
-          padding: unset;
+          padding: 14px 15px;
           margin: unset;
           font-weight: bold;
-          padding: 15px;
+          color: @cc_fg;
       }
+    
       .widget-title > label {
-          font-size: 1.5rem;
+          font-size: 1.25rem;
+          color: @cc_fg;
       }
+    
       .widget-title > button {
-          padding:unset;
-          margin:unset;
+          padding: 0px 8px;
+          margin: unset;
           text-shadow: none;
-          background: #e64553;
+          background: @error;
+          color: @on_error;
           border: none;
           box-shadow: none;
-          border-radius: 100px;
-          padding:0px 6px;
-          transition: all .7s ease;
+          border-radius: 999px;
+          transition: all .2s ease;
       }
+    
       .widget-title > button:hover {
-          background: alpha(@red, 0.8);
-          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.65);
+          background: alpha(@error, 0.85);
+          box-shadow: 0 0 10px 0 alpha(#000000, 0.35);
       }
     '';
   };

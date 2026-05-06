@@ -16,12 +16,13 @@
         "clock"
         "niri/workspaces"
       ];
-      modules-center = [ "mpris" ];
+      modules-center = [ "niri/window" ];
       modules-right = [
         "custom/swaync"
         "memory"
         "battery"
         "pulseaudio"
+	"mpris"
         "custom/power"
       ];
 
@@ -40,7 +41,7 @@
       "custom/swaync" = {
         tooltip = true;
         tooltip-format = "Left Click: Launch Notification Center\nRight Click: Do not Disturb";
-        format = " {text} ";
+        format = "  {text} ";
         format-icons = {
           notification = "<span foreground='red'><sup></sup></span>";
           none = "";
@@ -72,7 +73,7 @@
       };
 
       mpris = {
-        format = "{status_icon} {artist} - {title}";
+        format = "{status_icon}";
         status-icons = {
           playing = "󰎇";
           paused = "";
@@ -81,8 +82,8 @@
       };
 
       clock = {
-        format = " {:%H:%M}";
-        format-alt = " {:%A, %B %d, %Y (%R)}";	
+        format = "  {:%H:%M}";
+        format-alt = "  {:%A, %B %d, %Y (%R)}";	
         tooltip-format = "<tt><small>{calendar}</small></tt>";
         calendar = {
           mode = "year";
@@ -105,17 +106,17 @@
       };
 
       battery = {
-        format = "󱐋 {capacity}%";
+        format = "󱐋  {capacity}%";
         tooltip-format = "{power}, {time} until full or empty";
       };
 
       memory = {
-        format = " {percentage}%";
+        format = "  {percentage}%";
         tooltip-format = "{used}GiB / {total}GiB used\n{swapUsed}GiB / {swapTotal} swap used\n";
       };
 
       pulseaudio = {
-        format = "󰕾 {volume}%";
+        format = "󰕾  {volume}%";
       };
 
       "custom/power" = {
@@ -128,7 +129,7 @@
       @import "${config.xdg.configHome}/waybar/colors.css";
 
       * {
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: "Poppins Semibold", "Symbols Nerd Font", Roboto, Arial;
       }
 
       window#waybar > box {
