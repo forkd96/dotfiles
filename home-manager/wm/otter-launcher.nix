@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   xdg.configFile."otter-launcher/config.toml".text = ''
     [general]
     default_module             = "app"       # The module to run when no prefix is matched
@@ -80,6 +80,18 @@
     with_argument = true
 
     [[modules]]
+    description  = "open bluetui"
+    prefix       = "bt"
+    cmd          = "bluetui"
+    with_argument = false
+
+    [[modules]]
+    description  = "open nmtui"
+    prefix       = "nt"
+    cmd          = "nmtui"
+    with_argument = false
+
+    [[modules]]
     description  = "power menu with fzf"
     prefix       = "p"
     cmd          = """
@@ -98,6 +110,18 @@
       | fzf --reverse --no-scrollbar --padding 1,3 --prompt 'Power Menu: ' \
       | tail -1)
     """
+
+    [[modules]]
+    description  = "edit system config"
+    prefix       = "cn"
+    cmd          = "kitty --detach 'nvim' '${config.home.homeDirectory}/dotfiles/nixos/configuration.nix'; pkill otter"
+    with_argument = false
+
+    [[modules]]
+    description  = "edit HM apps.nix"
+    prefix       = "an"
+    cmd          = "kitty --detach 'nvim' '${config.home.homeDirectory}/dotfiles/home-manager/apps.nix'; pkill otter"
+    with_argument = false
 
     [[modules]]
     description  = "run command in terminal"

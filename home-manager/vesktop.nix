@@ -604,7 +604,7 @@
       };
     };
     vencord.extraQuickCss = ''
-    @import url("https://catppuccin.github.io/discord/dist/catppuccin-macchiato-blue.theme.css");
+      @import url("https://catppuccin.github.io/discord/dist/catppuccin-latte.theme.css"); 
     '';
   };
 }
