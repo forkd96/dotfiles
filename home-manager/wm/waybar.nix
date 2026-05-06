@@ -121,7 +121,7 @@
 
       "custom/power" = {
         format = "⏻";
-	on-click = "wlogout";
+	on-click = "kitty --app-id=otter 'otter-launcher' 'p'";
       };
     }];
 
@@ -172,7 +172,7 @@
       }
 
       #clock, #mpris, #battery, #pulseaudio,
-      #memory, #custom-power, #custom-swaync {
+      #memory, #custom-power, #custom-swaync, #niri-window {
         padding: 10px;
 	color: @on_secondary_container;
       }

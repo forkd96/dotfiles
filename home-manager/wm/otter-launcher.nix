@@ -76,13 +76,7 @@
     [[modules]]
     description  = "find packages"
     prefix       = "pm"
-    cmd          = "pmux -SD {}"
-    with_argument = true
-
-    [[modules]]
-    description  = "install packages"
-    prefix       = "i"
-    cmd          = "pmux -S {}"
+    cmd          = "librewolf 'https://search.nixos.org/packages?channel=unstable&query={}'"
     with_argument = true
 
     [[modules]]
