@@ -13,9 +13,10 @@
       web-devicons.enable = true;
       luasnip.enable = true;
       # nvim-cmp.enable = true;
+      lazyvim.enable = true;
     };
 
-    extraPlugins = with pkgs.vimPlugins; [
+     extraPlugins = with pkgs.vimPlugins; [
       mini-pairs
       # cmp_luasnip
     ];

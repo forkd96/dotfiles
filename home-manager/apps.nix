@@ -30,9 +30,13 @@
       redact
       feishin
       insomnia
+      lmms
+      ayugram-desktop
+      fluffychat
 
-      catppuccin-kde
       catppuccin-qt5ct
+      
+      kid3
     ];
   };
 }

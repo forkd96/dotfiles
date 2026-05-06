@@ -41,7 +41,6 @@
 
     overview {
       zoom 0.70
-      backdrop-color "#24273a"
       workspace-shadow {
         off
       }

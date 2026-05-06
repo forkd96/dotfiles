@@ -16,7 +16,7 @@
     [templates.kitty]
     input_path = "${config.xdg.configHome}/matugen/templates/kitty-colors.conf"
     output_path = "${config.xdg.configHome}/kitty/themes/Matugen.conf"
-    post_hook = "kitty +kitten themes --reload-in=all Matugen"
+    post_hook = "kitty +kitten themes --config-file-name theme.conf --reload-in=all Matugen"
     
     [templates.qt5ct]
     input_path = "${config.xdg.configHome}/matugen/templates/qtct-colors.conf"

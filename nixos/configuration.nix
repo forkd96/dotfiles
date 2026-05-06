@@ -201,6 +201,10 @@
     docker-compose
   ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "olm-3.2.16"
+  ];
+
   nix.gc = {
     automatic = true;
     dates = "weekly";

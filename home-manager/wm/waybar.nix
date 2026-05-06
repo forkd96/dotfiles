@@ -131,10 +131,14 @@
         font-family: "JetBrainsMono Nerd Font";
       }
 
+      window#waybar > box {
+        background-color: @secondary_container;
+        border-radius: 16px;
+      }
+
       window#waybar {
         font-size: 16px;
-        border-radius: 16px;
-        background-color: @secondary_container;
+        background-color: transparent;
       }
 
       .modules-left {
@@ -150,8 +154,12 @@
         font-weight: bold;
       }
 
+      #workspaces button {
+        color: @on_secondary_container;
+      }
+
       #workspaces button.empty {
-        color: @outline;
+        color: @on_secondary_container;
       }
 
       #workspaces button.active.empty {
@@ -165,6 +173,7 @@
       #clock, #mpris, #battery, #pulseaudio,
       #memory, #custom-power, #custom-swaync {
         padding: 10px;
+	color: @on_secondary_container;
       }
     '';
   };
