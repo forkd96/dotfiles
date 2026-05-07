@@ -27,7 +27,7 @@ be aware that this rice is a bit incomplete so you might encounter some styling 
 - notifications: [swaync](https://github.com/erikreider/swaynotificationcenter)
 
 ### themes / fonts
-- color scheme: generated with [matugen](https://github.com/InioX/matugen), kitty is static due to the palette being ass no matter what template i'm using - it's catppuccin latte for light mode and catppuccin macchiato for dark mode
+- color scheme: generated with [matugen](https://github.com/InioX/matugen), kitty is static due to the palette being ass no matter what template i'm using - it's ayu day for light mode and catppuccin macchiato for dark mode
 - font: jetbrainsmono nerd font for terminal/mono, fira sans semibold for ui
 
 ## installation 
