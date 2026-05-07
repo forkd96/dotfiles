@@ -7,6 +7,9 @@
   <img src="assets/light.png">
   <img src="assets/everforest-dark.png">
   <img src="assets/catppuccin-dark.png">
+</details>
+
+be aware that this rice is a bit incomplete so you might encounter some styling bugs, i have no idea how to fix some of them
 </div>
 
 ## details
