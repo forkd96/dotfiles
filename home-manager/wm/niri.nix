@@ -165,7 +165,7 @@
         Mod+Return { spawn "kitty"; }
         Alt+Shift+T { spawn "kitty"; }
 
-        Mod+BackSlash { spawn "nautilus"; }
+        Mod+BackSlash { spawn "dolphin"; }
 
         Alt+Space { spawn "kitty" "--app-id" "'otter'" "otter-launcher"; }
 

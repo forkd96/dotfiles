@@ -12,7 +12,6 @@
       margin = "7";
 
       modules-left = [
-        "custom/runner"
         "clock"
         "niri/workspaces"
       ];
@@ -167,12 +166,8 @@
         color: @primary;
       }
 
-      #mpris {
-        font-style: italic;
-      }
-
       #clock, #mpris, #battery, #pulseaudio,
-      #memory, #custom-power, #custom-swaync, #niri-window {
+      #memory, #custom-power, #custom-swaync, #niri-window, #niri-language {
         padding: 10px;
 	color: @on_secondary_container;
       }
