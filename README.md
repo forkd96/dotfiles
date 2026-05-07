@@ -1,6 +1,6 @@
 <div align="center">
 
-# Fork's shitty dotfiles
+# Undrrdawg's shitty dotfiles
 
 </div>
 
