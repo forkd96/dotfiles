@@ -1,6 +1,19 @@
 { config, ... }:
 
 {
+
+  # *** helper script ***
+  home.file."${config.home.homeDirectory}/.local/bin/matugen-mode-sync" = {
+    executable = true;
+    text = ''
+      #!/usr/bin/env bash
+      case "$1" in
+        dark)  dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'" ;;
+        light) dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'" ;;
+      esac
+    '';
+  };
+
   xdg.configFile = {
 
     # *** matugen config ***
@@ -13,6 +26,11 @@
 
       [config]
       scheme = "scheme-expressive"
+
+      [templates.system_theme]
+      input_path  = "${config.xdg.configHome}/matugen/templates/system-theme.txt"
+      output_path = "/tmp/matugen-mode"
+      post_hook   = "${config.home.homeDirectory}/.local/bin/matugen-mode-sync {{ mode }}"
 
       [templates.waybar]
       input_path = "${config.xdg.configHome}/matugen/templates/colors.css"
@@ -68,6 +86,10 @@
     '';
 
     # *** templates ***   
+
+    "matugen/templates/system-theme.txt".text = ''
+      {{ mode }}
+    '';
 
     "matugen/templates/btop.theme".text = ''
       # Matugen template for btop

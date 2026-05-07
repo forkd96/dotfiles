@@ -167,7 +167,7 @@
       }
 
       #clock, #mpris, #battery, #pulseaudio,
-      #memory, #custom-power, #custom-swaync, #niri-window, #niri-language {
+      #memory, #custom-power, #custom-swaync, #window, #niri-language {
         padding: 10px;
 	color: @on_secondary_container;
       }
