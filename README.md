@@ -1,45 +1,45 @@
 <div align="center">
 
-# Undrrdawg's shitty dotfiles
-
+# undrrdawg's shitty dotfiles
+<details>
+  <summary>screenshots</summary>
+  <br>
+  <img src="assets/light.png">
+  <img src="assets/everforest-dark.png">
+  <img src="assets/catppuccin-dark.png">
 </div>
 
-## Details
-### Desktop
-- OS: [NixOS](https://nixos.org/)
-- WM: [niri](https://github.com/niri-wm/niri)
-- Bar: [waybar](https://github.com/Alexays/Waybar)
-- App launcher: [fsel](https://github.com/Mjoyufull/fsel), [otter-launcher](https://github.com/kuokuo123/otter-launcher)
-- Wallpaper switcher: [matuwall](https://github.com/naurissteins/Matuwall)
+## details
+### desktop
+- os: [nixos](https://nixos.org/)
+- wm: [niri](https://github.com/niri-wm/niri)
+- bar: [waybar](https://github.com/alexays/waybar)
+- app launcher: [fsel](https://github.com/mjoyufull/fsel) paired with [otter-launcher](https://github.com/kuokuo123/otter-launcher)
 
-### Terminal
-- Terminal: [kitty](https://github.com/kovidgoyal/kitty)
-- Fetch: [fastfetch](https://github.com/fastfetch-cli/fastfetch)
-- Shell: [fish](https://github.com/fish-shell/fish-shell)
-- Prompt: [tide](https://github.com/IlanCosman/tide)
-- Notifications: [swaync](https://github.com/ErikReider/SwayNotificationCenter)
+### terminal
+- terminal: [kitty](https://github.com/kovidgoyal/kitty)
+- fetch: [fastfetch](https://github.com/fastfetch-cli/fastfetch)
+- shell: [fish](https://github.com/fish-shell/fish-shell)
+- prompt: [tide](https://github.com/ilancosman/tide)
+- notifications: [swaync](https://github.com/erikreider/swaynotificationcenter)
 
-### Themes / Fonts
-- Color scheme: [Catppuccin Macchiato](https://catppuccin.com/palette/) (primary color is blue / mauve in some places)
-- Wallpapers: [orangci/walls-catppuccin-mocha](https://github.com/orangci/walls-catppuccin-mocha)
-- Font: JetBrainsMono Nerd Font
-- GTK theme: [Catppuccin by Fausto-Korpsvart](https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme)
+### themes / fonts
+- color scheme: generated with [matugen](https://github.com/InioX/matugen), kitty is static due to the palette being ass no matter what template i'm using - it's catppuccin latte for light mode and catppuccin macchiato for dark mode
+- font: jetbrainsmono nerd font for terminal/mono, fira sans semibold for ui
 
-- All other app themes: [Catppuccin ports](https://catppuccin.com/ports/)
-
-## Installation 
-### NixOS:
-> [!WARNING]  
-> This will overwrite your existing configuration.nix file. Though, the script backs up /etc/nixos and we're talking about NixOS so you can just roll back at any time.
+## installation 
+### nixos:
+> [!warning]  
+> this will overwrite your existing configuration.nix file. though, the script backs up /etc/nixos and we're talking about nixos so you can just roll back at any time.
 
 ```shell
 sudo nixos-generate-config --show-hardware-config > /tmp/hardware-configuration.nix
 nix-shell -p git --run "git clone https://codeberg.org/forkd/dotfiles ~/dotfiles"
 cp /tmp/hardware-configuration.nix ~/dotfiles/nixos/hardware-configuration.nix
 sudo mv /etc/nixos /etc/nixos.bak
-sudo ln -sf /home/$USER/dotfiles /etc/nixos
+sudo ln -sf /home/$user/dotfiles /etc/nixos
 sudo nixos-rebuild switch
 ```
 
-### Other distros:
-- Just drop in stuff from .config in the repo's root into your actual ~/.config and you're golden. .config may be outdated compared to HM though, because i mainly use home manager
+### other distros:
+- just drop in stuff from .config in the repo's root into your actual ~/.config and you're golden. .config may be outdated compared to HM though, because i mainly use home manager
