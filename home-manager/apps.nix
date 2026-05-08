@@ -4,10 +4,10 @@
   home = {
     packages = with pkgs; [
       inputs.matugen.packages.${system}.default
-      hello
+      pywalfox-native
       kitty
       ghostty
-      kdePackages.dolphin
+      xfce.thunar
       eza
       bat
       kitty-themes
@@ -15,6 +15,7 @@
       awww
       fsel
       wlogout
+      kdePackages.gwenview
 
       prismlauncher
       easyeffects

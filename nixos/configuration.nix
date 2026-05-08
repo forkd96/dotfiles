@@ -127,6 +127,12 @@
     jdk25
     docker
     docker-compose
+
+    libsForQt5.qt5ct
+    qt6Packages.qt6ct
+    kdePackages.breeze
+    kdePackages.breeze-icons
+    kdePackages.kde-cli-tools
   ];
 
   # *** all the mostly static stuff i change once in a blue moon ***
@@ -161,6 +167,12 @@
     wlr.enable = true;
   };
 
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
+    style = "breeze";
+  };
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -177,15 +189,6 @@
   };
 
   services.libinput.enable = true;
-
-  services.logind = {
-    settings.Login = {
-      IdleAction = "ignore";
-      IdleActionSec = 0;
-      HandleLidSwitch = "ignore";
-    };
-  };
-
 
   # --- ---
 

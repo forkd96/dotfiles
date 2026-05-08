@@ -603,8 +603,5 @@
         settingsSyncVersion = 1777506145180;
       };
     };
-    vencord.extraQuickCss = ''
-      @import url("https://catppuccin.github.io/discord/dist/catppuccin-latte.theme.css"); 
-    '';
   };
 }
