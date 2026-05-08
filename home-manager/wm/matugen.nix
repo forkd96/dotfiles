@@ -248,61 +248,89 @@
     '';
 
     "matugen/templates/kitty-colors.conf".text = ''
-      foreground              {{ colors.on_surface.dark.hex }}
-      background              {{ colors.surface_container_lowest.dark.hex }}
-      cursor                  {{ colors.primary.dark.hex }}
-      cursor_text_color       {{ colors.surface_container_lowest.dark.hex }}
-    
-      selection_foreground    {{ colors.on_primary.dark.hex }}
-      selection_background    {{ colors.primary.dark.hex }}
-      url_color               {{ colors.tertiary.dark.hex }}
-    
-      # black / bright black
-      color0  {{ colors.surface.dark.hex }}
-      color8  {{ colors.surface_container_high.dark.hex }}
-    
+      <* if {{ is_dark_mode }} *>
+      cursor {{colors.on_surface.default.hex}}
+      cursor_text_color {{colors.on_surface_variant.default.hex}}
+      
+      foreground            {{colors.on_surface.default.hex}}
+      background            {{colors.surface.default.hex}}
+      selection_foreground  {{colors.on_secondary.default.hex}}
+      selection_background  {{colors.secondary_fixed_dim.default.hex}}
+      url_color             {{colors.primary.default.hex}}
+
+      # black
+      color8   #262626
+      color0   #4c4c4c
+      
       # red
-      color1  {{ colors.error.dark.hex }}
-      color9  {{ colors.error_container.dark.hex }}
-    
+      color1   #ac8a8c
+      color9   #c49ea0
+      
       # green
-      color2  {{ colors.primary.dark.hex }}
-      color10 {{ colors.primary_fixed.dark.hex }}
-    
+      color2   #8aac8b
+      color10  #9ec49f
+      
       # yellow
-      color3  {{ colors.secondary.dark.hex }}
-      color11 {{ colors.secondary_fixed.dark.hex }}
-    
+      color3   #aca98a
+      color11  #c4c19e
+      
       # blue
-      color4  {{ colors.tertiary.dark.hex }}
-      color12 {{ colors.tertiary_fixed.dark.hex }}
-    
+      color4  {{colors.primary.default.hex}}
+      color12 #a39ec4
+      
       # magenta
-      color5  {{ colors.primary_container.dark.hex }}
-      color13 {{ colors.secondary_container.dark.hex }}
-    
+      color5   #ac8aac
+      color13  #c49ec4
+      
       # cyan
-      color6  {{ colors.tertiary_container.dark.hex }}
-      color14 {{ colors.tertiary_fixed_dim.dark.hex }}
-    
-      # white / bright white
-      color7  {{ colors.on_surface_variant.dark.hex }}
-      color15 {{ colors.on_surface.dark.hex }}
-    
-      mark1_foreground {{ colors.on_primary_fixed.dark.hex }}
-      mark1_background {{ colors.primary_fixed.dark.hex }}
-      mark2_foreground {{ colors.on_secondary_fixed.dark.hex }}
-      mark2_background {{ colors.secondary_fixed.dark.hex }}
-      mark3_foreground {{ colors.on_tertiary_fixed.dark.hex }}
-      mark3_background {{ colors.tertiary_fixed.dark.hex }}
-    
-      active_tab_foreground   {{ colors.on_primary.dark.hex }}
-      active_tab_background   {{ colors.primary.dark.hex }}
-      inactive_tab_foreground {{ colors.on_surface_variant.dark.hex }}
-      inactive_tab_background {{ colors.surface_container.dark.hex }}
-    
-      active_border_color     {{ colors.primary.dark.hex }}
-      inactive_border_color   {{ colors.outline.dark.hex }}
+      color6   #8aacab
+      color14  #9ec3c4
+      
+      # white
+      color15   #e7e7e7
+      color7  #f0f0f0   
+      <* else *>
+      cursor {{colors.on_surface.light.hex}}
+      cursor_text_color {{colors.on_surface_variant.light.hex}}
+      
+      foreground            {{colors.on_surface.light.hex}}
+      background            {{colors.surface.light.hex}}
+      selection_foreground  {{colors.on_secondary.light.hex}}
+      selection_background  {{colors.secondary_fixed_dim.light.hex}}
+      url_color             {{colors.primary.light.hex}}
+
+      # black
+      color8   #262626
+      color0   #4c4c4c
+      
+      # red
+      color1   #ac8a8c
+      color9   #c49ea0
+      
+      # green
+      color2   #8aac8b
+      color10  #9ec49f
+      
+      # yellow
+      color3   #aca98a
+      color11  #c4c19e
+      
+      # blue
+      color4  {{colors.primary.default.hex}}
+      color12 #a39ec4
+      
+      # magenta
+      color5   #ac8aac
+      color13  #c49ec4
+      
+      # cyan
+      color6   #8aacab
+      color14  #9ec3c4
+      
+      # white
+      color15   #e7e7e7
+      color7  #f0f0f0   
+      <* endif *>
     '';
 
     "matugen/templates/niri-colors.kdl".text = ''

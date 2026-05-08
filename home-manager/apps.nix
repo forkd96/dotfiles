@@ -6,26 +6,25 @@
       inputs.matugen.packages.${system}.default
       pywalfox-native
       kitty
-      ghostty
-      xfce.thunar
+      thunar
       eza
       bat
-      kitty-themes
-      gpu-screen-recorder
       awww
       fsel
-      wlogout
       kdePackages.gwenview
+
+      yazi
+      exiftool
+      mediainfo
 
       prismlauncher
       easyeffects
-      gajim
+      kdePackages.elisa
       kdePackages.kdeconnect-kde
       librewolf
       heroic
       obs-studio
       qbittorrent
-      nicotine-plus
       vscodium
       cinny
       vlc

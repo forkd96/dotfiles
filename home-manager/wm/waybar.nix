@@ -9,7 +9,9 @@
       position = "top";
       height = 32;
       mode = "dock";
-      margin = "12";
+      margin-top = 14;
+      margin-left = 14;
+      margin-right = 14;
 
       modules-left = [
         "clock"
