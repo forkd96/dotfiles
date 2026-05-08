@@ -27,6 +27,12 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
+  zramSwap = {
+    enable = true;
+    algorithm = "lz4";
+    memoryPercent = 100;
+  };
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
   
