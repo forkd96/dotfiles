@@ -9,7 +9,7 @@
       position = "top";
       height = 32;
       mode = "dock";
-      margin = "7";
+      margin = "12";
 
       modules-left = [
         "clock"
@@ -133,7 +133,7 @@
 
       window#waybar > box {
         background-color: @secondary_container;
-        border-radius: 16px;
+        border-radius: 24px;
       }
 
       window#waybar {
