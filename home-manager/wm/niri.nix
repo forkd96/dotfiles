@@ -37,7 +37,7 @@
     spawn-at-startup "swaync"
     spawn-at-startup "awww-daemon"
     spawn-sh-at-startup "gsr-ui launch-daemon"
-    spawn-at-startup "kitty"
+    spawn-at-startup "dex --autostart --environment niri"
 
     overview {
       zoom 0.70

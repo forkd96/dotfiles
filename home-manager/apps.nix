@@ -7,6 +7,7 @@
       hello
       kitty
       ghostty
+      kdePackages.dolphin
       eza
       bat
       kitty-themes
