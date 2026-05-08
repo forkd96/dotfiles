@@ -89,7 +89,6 @@
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.nerd-fonts.symbols-only
       pkgs.poppins
-      pkgs.fira
     ];
   };
 

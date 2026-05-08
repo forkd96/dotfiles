@@ -127,7 +127,7 @@
       * {
           outline: none;
           border: none;
-          font-family: "Poppins", "Symbols Nerd Font";
+          font-family: "Poppins Semibold", "Symbols Nerd Font";
           font-size: 15px;
           text-shadow: none;
           color: @cc_fg;
