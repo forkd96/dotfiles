@@ -51,6 +51,11 @@
       output_path = "${config.xdg.configHome}/swaync/colors.css"
       post_hook = "swaync-client -rs"
 
+      [templates.neovim]
+      input_path = '${config.xdg.configHome}/matugen/templates/nvim.lua'
+      output_path = '${config.xdg.configHome}/nvim/lua/colors.lua'
+      post_hook = 'pkill -SIGUSR1 nvim'
+
 #      unsused for now
 #      [templates.matuwall]
 #      input_path = '${config.xdg.configHome}/matugen/templates/matuwall-colors.json'
@@ -82,16 +87,6 @@
       input_path = "${config.xdg.configHome}/matugen/templates/niri-colors.kdl"
       output_path = "${config.xdg.configHome}/niri/colors.kdl"
       post_hook = "niri msg action load-config-file"
-
-      [templates.nvim]
-      input_path = "${config.xdg.configHome}/matugen/templates/nvim-colors.lua"
-      output_path = "${config.xdg.configHome}/nvim/colors/colors.vim"
-      post_hook = "pkill -SIGUSR1 nvim"
-
-      [templates.btop]
-      input_path = "${config.xdg.configHome}/matugen/templates/btop.theme"
-      output_path = "${config.xdg.configHome}/btop/themes/colors.theme"
-      post_hook = "pkill -USR2 btop || true"
 
       [templates.cava]
       input_path = "${config.xdg.configHome}/matugen/templates/cava-colors.ini"
@@ -157,118 +152,6 @@
       @define-color sidebar_fg_color @window_fg_color;
       @define-color sidebar_border_color @window_bg_color;
       @define-color sidebar_backdrop_color @window_bg_color;
-    '';
-
-    "matugen/templates/btop.theme".text = ''
-      # Matugen template for btop
-
-
-      # Colors should be in 6 or 2 character hexadecimal or single spaced rgb decimal: "#RRGGBB", "#BW" or "0-255 0-255 0-255"
-      # example for white: "#ffffff", "#ff" or "255 255 255".
-
-      # All graphs and meters can be gradients
-      # For single color graphs leave "mid" and "end" variable empty.
-      # Use "start" and "end" variables for two color gradient
-      # Use "start", "mid" and "end" for three color gradient
-
-      # Main background, empty for terminal default, need to be empty if you want transparent background
-      theme[main_bg]=""
-
-      # Main text color
-      theme[main_fg]="{{colors.on_surface.default.hex}}"
-
-      # Title color for boxes
-      theme[title]="{{colors.primary.default.hex}}"
-
-      # Highlight color for keyboard shortcuts
-      theme[hi_fg]="{{colors.secondary.default.hex}}"
-
-      # Background color of selected item in processes box
-      theme[selected_bg]="{{colors.primary.default.hex}}"
-
-      # Foreground color of selected item in processes box
-      theme[selected_fg]="{{colors.on_primary.default.hex}}"
-
-      # Color of inactive/disabled text
-      theme[inactive_fg]="{{colors.on_surface_variant.default.hex}}"
-
-      # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
-      theme[proc_misc]="{{colors.tertiary.default.hex}}"
-
-      # Cpu box outline color
-      theme[cpu_box]="{{colors.outline.default.hex}}"
-
-      # Memory/disks box outline color
-      theme[mem_box]="{{colors.outline.default.hex}}"
-
-      # Net up/down box outline color
-      theme[net_box]="{{colors.outline.default.hex}}"
-
-      # Processes box outline color
-      theme[proc_box]="{{colors.outline.default.hex}}"
-
-      # Box divider line and small boxes line color
-      theme[div_line]="{{colors.outline_variant.default.hex}}"
-
-      # Temperature graph colors
-      theme[temp_start]="{{colors.secondary.default.hex}}"
-      theme[temp_mid]="{{colors.primary.default.hex}}"
-      theme[temp_end]="{{colors.error.default.hex}}"
-
-      # CPU graph colors
-      theme[cpu_start]="{{colors.secondary.default.hex}}"
-      theme[cpu_mid]="{{colors.primary.default.hex}}"
-      theme[cpu_end]="{{colors.error.default.hex}}"
-
-      # Mem/Disk free meter
-      theme[free_start]="{{colors.secondary.default.hex}}"
-      theme[free_mid]=""
-      theme[free_end]="{{colors.secondary_container.default.hex}}"
-
-      # Mem/Disk cached meter
-      theme[cached_start]="{{colors.tertiary.default.hex}}"
-      theme[cached_mid]=""
-      theme[cached_end]="{{colors.tertiary_container.default.hex}}"
-
-      # Mem/Disk available meter
-      theme[available_start]="{{colors.primary.default.hex}}"
-      theme[available_mid]=""
-      theme[available_end]="{{colors.primary_container.default.hex}}"
-
-      # Mem/Disk used meter
-      theme[used_start]="{{colors.error.default.hex}}"
-      theme[used_mid]=""
-      theme[used_end]="{{colors.error_container.default.hex}}"
-
-      # Download graph colors
-      theme[download_start]="{{colors.secondary.default.hex}}"
-      theme[download_mid]="{{colors.primary.default.hex}}"
-      theme[download_end]="{{colors.tertiary.default.hex}}"
-
-      # Upload graph colors
-      theme[upload_start]="{{colors.secondary.default.hex}}"
-      theme[upload_mid]="{{colors.primary.default.hex}}"
-      theme[upload_end]="{{colors.tertiary.default.hex}}"
-    '';
-
-    "matugen/templates/cava-colors.ini".text = ''
-      [color]
-      background = 'default'
-      foreground = '{{colors.primary.default.hex}}'
-
-      ; gradient = 0
-      gradient = 1
-      gradient_color_1 = '{{colors.primary_container.default.hex}}'
-      gradient_color_2 = '{{colors.primary.default.hex}}'
-      gradient_color_3 = '{{colors.on_primary_container.default.hex}}'
-
-      horizontal_gradient = 0
-      ; horizontal_gradient = 1
-      horizontal_gradient_color_1 = '{{colors.primary_container.default.hex}}'
-      horizontal_gradient_color_2 = '{{colors.primary.default.hex}}'
-      horizontal_gradient_color_3 = '{{colors.on_primary_container.default.hex}}'
-      horizontal_gradient_color_4 = '{{colors.primary.default.hex}}'
-      horizontal_gradient_color_5 = '{{colors.primary_container.default.hex}}'
     '';
 
     "matugen/templates/colors.css".text = ''
@@ -401,6 +284,151 @@
       }
     '';
 
+    "matugen/templates/nvim.lua".text = ''
+      -- yanked from here: https://github.com/kkuroma/dotfiles/blob/main/src/.config/matugen/templates/neovim-theme.lua
+      -- Auto-generated by Matugen
+      -- Colors derived from matugen palette with forced hues (matching ANSI/kitty)
+ 
+      local colors = {
+        red      = '#c49ea0',
+        green    = '#9ec49f',
+        yellow   = '#c4c19e',
+        blue     = '{{colors.primary.default.hex}}',
+        magenta  = '#c49ec4',
+        cyan     = '#9ec3c4',
+        orange   = '#c4c19e',
+        pink     = '#c49ec4',
+      
+        fg       = '{{colors.on_surface.default.hex}}',
+        fg_dim   = '{{colors.on_surface_variant.default.hex}}',
+        comment  = '{{colors.outline.default.hex}}',
+        primary  = '{{colors.primary.default.hex}}',
+        secondary = '{{colors.secondary.default.hex}}',
+        tertiary  = '{{colors.tertiary.default.hex}}',  -- was missing
+      }
+
+      -- Helper
+      local function set_hl_multiple(groups, value)
+        for _, v in pairs(groups) do
+          vim.api.nvim_set_hl(0, v, value)
+        end
+      end
+      
+      -- Core: transparent backgrounds
+      vim.api.nvim_set_hl(0, 'Normal', { fg = colors.fg, bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'NormalNC', { fg = colors.fg, bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'NormalFloat', { fg = colors.fg, bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'EndOfBuffer', { fg = colors.comment, bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'MsgArea', { fg = colors.fg, bg = 'NONE' })
+      
+      -- Selection / cursor (these need bg to be readable)
+      vim.api.nvim_set_hl(0, 'Visual', {
+        bg = '{{colors.primary_container.default.hex}}',
+      })
+      vim.api.nvim_set_hl(0, 'CursorLine', {
+        bg = '{{colors.surface_container_high.default.hex}}',
+      })
+      vim.api.nvim_set_hl(0, 'Search', {
+        bg = '{{colors.secondary_container.default.hex}}',
+        fg = '{{colors.on_secondary_container.default.hex}}',
+      })
+      vim.api.nvim_set_hl(0, 'IncSearch', {
+        bg = '{{colors.primary.default.hex}}',
+        fg = '{{colors.on_primary.default.hex}}',
+      })
+      vim.api.nvim_set_hl(0, 'PmenuSel', {
+        bg = '{{colors.primary.default.hex}}',
+        fg = '{{colors.on_primary.default.hex}}',
+      })
+      
+      -- Pmenu (needs bg to float above content)
+      vim.api.nvim_set_hl(0, 'Pmenu', {
+        bg = '{{colors.surface_container_high.default.hex}}',
+        fg = colors.fg,
+      })
+      
+      -- StatusLine (needs bg to separate from content)
+      vim.api.nvim_set_hl(0, 'StatusLine', {
+        bg = '{{colors.surface_container.default.hex}}',
+        fg = colors.fg,
+      })
+      
+      -- Line numbers
+      vim.api.nvim_set_hl(0, 'LineNr', { fg = colors.comment })
+      vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = colors.primary, bold = true })
+      
+      -- Comments
+      set_hl_multiple({ 'Comment', '@comment' }, {
+        fg = colors.comment,
+        italic = true,
+      })
+      
+      -- Keywords (primary accent)
+      set_hl_multiple({ 'Keyword', '@keyword', '@keyword.control', '@keyword.function', 'Conditional', 'Repeat' }, {
+        fg = colors.primary,
+      })
+      
+      -- Functions (secondary accent)
+      set_hl_multiple({ 'Function', '@function', '@function.call', '@method', '@method.call' }, {
+        fg = colors.secondary,
+      })
+      
+      -- Strings (green)
+      set_hl_multiple({ 'String', '@string', '@string.escape' }, {
+        fg = colors.green,
+      })
+      
+      -- Types & Classes
+      set_hl_multiple({ 'Type', '@type', '@type.builtin', 'Structure', 'StorageClass' }, {
+        fg = colors.tertiary,
+      })
+      
+      -- Numbers & Constants
+      set_hl_multiple({ 'Number', '@number', 'Boolean', '@boolean', 'Constant', '@constant' }, {
+        fg = colors.orange,
+      })
+
+      -- Variables (default fg)
+      set_hl_multiple({ 'Identifier', '@variable', '@parameter' }, {
+        fg = colors.fg,
+      })
+      
+      -- Special/Magic variables (red)
+      set_hl_multiple({ '@variable.builtin', 'Special' }, {
+        fg = colors.red,
+        italic = true,
+      })
+      
+      -- Operators (fg)
+      set_hl_multiple({ 'Operator', '@operator' }, {
+        fg = colors.cyan,
+      })
+      
+      -- Punctuation
+      set_hl_multiple({ 'Delimiter', '@punctuation.delimiter', '@punctuation.bracket' }, {
+        fg = colors.fg_dim,
+      })
+      
+      -- Tags (HTML/XML)
+      set_hl_multiple({ 'Tag', '@tag', '@tag.delimiter' }, {
+        fg = colors.primary,
+      })
+      
+      -- Attributes
+      set_hl_multiple({ '@tag.attribute' }, {
+        fg = colors.secondary,
+        italic = true,
+      })
+      
+      -- Diagnostics
+      vim.api.nvim_set_hl(0, 'Error', { fg = colors.red, bold = true })
+      vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = colors.red })
+      vim.api.nvim_set_hl(0, 'DiagnosticWarn', { fg = colors.yellow })
+      vim.api.nvim_set_hl(0, 'DiagnosticInfo', { fg = colors.blue })
+      vim.api.nvim_set_hl(0, 'DiagnosticHint', { fg = colors.fg_dim })
+    '';
+
     "matugen/templates/midnight-discord.css".text = ''
       /**
        * @name midnight
@@ -504,71 +532,24 @@
       }
     '';
 
-    "matugen/templates/nvim-colors.lua".text = ''
-      -- Generated by Matugen
-
-      require('base16-colorscheme').setup({
-        base00 = "{{colors.background.default.hex}}",
-        base01 = "{{colors.surface_container_lowest.default.hex}}",
-        base02 = "{{colors.surface_container_low.default.hex}}",
-        base03 = "{{colors.outline_variant.default.hex}}",
-        base04 = "{{colors.on_surface_variant.default.hex}}",
-        base05 = "{{colors.on_surface.default.hex}}",
-        base06 = "{{colors.inverse_on_surface.default.hex}}",
-        base07 = "{{colors.surface_bright.default.hex}}",
-
-        base08 = "{{colors.tertiary.default.hex | lighten: -5}}",
-        base09 = "{{colors.tertiary.default.hex}}",
-        base0A = "{{colors.secondary.default.hex}}",
-        base0B = "{{colors.primary.default.hex}}",
-        base0C = "{{colors.tertiary_container.default.hex}}",
-        base0D = "{{colors.primary_container.default.hex}}",
-        base0E = "{{colors.secondary_container.default.hex}}",
-        base0F = "{{colors.secondary.default.hex | lighten: -10}}",
-      })
-
-
-      -- We first theme base16, but we also need to fix some other colors that don't
-      -- contrast well by default
-
-      -- Helper function to set multiple highlight groups at once
-      local function set_hl_mutliple(groups, value)
-        for _, v in pairs(groups) do
-          vim.api.nvim_set_hl(0, v, value)
-        end
-      end
-
-      -- Make selected text stand out more
-      vim.api.nvim_set_hl(0, 'Visual', {
-        bg = '{{colors.primary_container.default.hex}}',
-        fg = '{{colors.on_primary_container.default.hex}}', -- normal text contrast
-      })
-
-      -- Make "string" text contrast better
-      set_hl_mutliple({ 'String', 'TSString' }, {
-        fg = '{{colors.tertiary.default.hex | lighten: -15.0 }}',
-      })
-
-      -- Grey out comments
-      set_hl_mutliple({ 'TSComment', 'Comment' }, {
-        fg = '{{colors.outline.default.hex}}',
-        italic = true,
-      })
-
-      -- Color in other highlight groups as you see fit!
-
-      set_hl_mutliple({ 'TSMethod', 'Method' }, {
-        fg = '{{colors.tertiary.default.hex}}',
-      })
-
-
-      set_hl_mutliple({ 'TSFunction', 'Function' }, {
-        fg = '{{colors.secondary.default.hex}}',
-      })
-
-      set_hl_mutliple({ 'Keyword', 'TSKeyword', 'TSKeywordFunction', 'TSRepeat' }, {
-        fg = '{{colors.inverse_primary.default.hex}}',
-      })
+    "matugen/templates/cava-colors.ini".text = ''
+      [color]
+      background = 'default'
+      foreground = '{{colors.primary.default.hex}}'
+      
+      ; gradient = 0
+      gradient = 1
+      gradient_color_1 = '{{colors.primary_container.default.hex}}'
+      gradient_color_2 = '{{colors.primary.default.hex}}'
+      gradient_color_3 = '{{colors.on_primary_container.default.hex}}'
+      
+      horizontal_gradient = 0
+      ; horizontal_gradient = 1
+      horizontal_gradient_color_1 = '{{colors.primary_container.default.hex}}'
+      horizontal_gradient_color_2 = '{{colors.primary.default.hex}}'
+      horizontal_gradient_color_3 = '{{colors.on_primary_container.default.hex}}'
+      horizontal_gradient_color_4 = '{{colors.primary.default.hex}}'
+      horizontal_gradient_color_5 = '{{colors.primary_container.default.hex}}'
     '';
 
     "matugen/templates/qtct-colors.conf".text = ''
