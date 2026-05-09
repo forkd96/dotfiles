@@ -46,4 +46,4 @@ sudo nixos-rebuild switch
 ```
 
 ### other distros:
-- just drop in stuff from .config in the repo's root into your actual ~/.config and you're golden. .config may be outdated compared to HM though, because i mainly use home manager
+- .config is extremely outdated because i just use HM, sorry! you can install home manager on your preferred distro and use my configs if you want
