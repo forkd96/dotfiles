@@ -5,7 +5,7 @@
   <summary>screenshots</summary>
   <br>
   <img src="assets/screenshots/light.png">
-  <img src "assets/screenshots/red.png">
+  <img src="assets/screenshots/red.png">
   <img src="assets/screenshots/everforest.png">
   <img src="assets/screenshots/catppuccin.png">
 </details>
