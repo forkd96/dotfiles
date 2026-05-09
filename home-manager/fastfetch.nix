@@ -1,211 +1,108 @@
-{ ... }: {
-
-programs.fastfetch.enable = true;
-programs.fastfetch.settings = {
-  "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json";
-
-  logo = {
-    type = "auto";
-    source = "";
-    color = {
-      "1" = "";
-      "2" = "";
-      "3" = "";
-      "4" = "";
-      "5" = "";
-      "6" = "";
-      "7" = "";
-      "8" = "";
-      "9" = "";
-    };
-    width = null;
-    height = null;
-    padding = {
-      top = 0;
-      left = 0;
-      right = 4;
-    };
-    printRemaining = true;
-    preserveAspectRatio = false;
-    recache = false;
-    position = "left";
-    chafa = {
-      fgOnly = false;
-      symbols = "block+border+space-wide-inverted";
+{ config, pkgs, ... }:
+let
+  logo = pkgs.fetchurl {
+    url = "https://codeberg.org/undrrdawg/undrrfiles/raw/branch/main/assets/rice/fetch-logo.png";
+    sha256 = "sha256-IricY1nuuSIwWBSS/ZbSJ/rK7z+Ob9Q7+wmJMLJxOBw=";
+  };
+in
+{
+  home.file.".config/assets/fetch-logo.png".source = logo;
+  programs.fastfetch = {
+    enable = true;
+    settings = {
+      "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
+      logo = {
+        source = "${config.xdg.configHome}/assets/fetch-logo.png";
+        type = "auto";
+        width = 25;
+        padding = {
+          top = 1;
+          right = 4;
+          left = 3;
+        };
+      };
+      display = {
+        separator = " ";
+      };
+      modules = [
+        {
+          key = "╭───────────╮";
+          type = "custom";
+        }
+        {
+          key = "│ {#31} user    {#keys}│";
+          type = "title";
+          format = "{user-name}";
+        }
+        {
+          key = "│ {#32}󰇅 hname   {#keys}│";
+          type = "title";
+          format = "{host-name}";
+        }
+        {
+          type = "command";
+          key = "│ {#33}󱦟 os age  {#keys}│";
+          keyColor = "magenta";
+	  text = ''
+    printf '\e[0m%s days\e[0m' "$(( ($(date +%s) - $(stat -c %W /)) / 86400 ))"
+  '';
+        }
+        {
+          key = "│ {#34}󰅐 uptime  {#keys}│";
+          type = "uptime";
+        }
+        {
+          key = "│ {#34}{icon} distro  {#keys}│";
+          type = "os";
+        }
+        {
+          key = "│ {#35} kernel  {#keys}│";
+          type = "kernel";
+        }
+        {
+          key = "│ {#36}󱂬 wm      {#keys}│";
+          type = "wm";
+        }
+        {
+          key = "│ {#36}󰇄 desktop {#keys}│";
+          type = "de";
+        }
+        {
+          key = "│ {#31} term    {#keys}│";
+          type = "terminal";
+        }
+        {
+          key = "│ {#32} shell   {#keys}│";
+          type = "shell";
+        }
+        {
+          key = "│ {#33}󰍛 cpu     {#keys}│";
+          type = "cpu";
+          showPeCoreCount = true;
+        }
+        {
+          key = "│ {#34}󰉉 disk    {#keys}│";
+          type = "disk";
+          folders = "/";
+        }
+        {
+          key = "│ {#36} memory  {#keys}│";
+          type = "memory";
+        }
+        {
+          key = "├───────────┤";
+          type = "custom";
+        }
+        {
+          key = "│ {#39} colors  {#keys}│";
+          type = "colors";
+          symbol = "circle";
+        }
+        {
+          key = "╰───────────╯";
+          type = "custom";
+        }
+      ];
     };
   };
-
-  display = {
-    stat = false;
-    pipe = false;
-    showErrors = false;
-    disableLinewrap = true;
-    hideCursor = false;
-    separator = ": ";
-    color = {
-      keys = "";
-      title = "";
-      output = "";
-      separator = "";
-    };
-    brightColor = true;
-    duration = {
-      abbreviation = false;
-      spaceBeforeUnit = "default";
-    };
-    size = {
-      maxPrefix = "YB";
-      binaryPrefix = "iec";
-      ndigits = 2;
-      spaceBeforeUnit = "default";
-    };
-    temp = {
-      unit = "D";
-      ndigits = 1;
-      color = {
-        green = "32";
-        yellow = "93";
-        red = "91";
-      };
-      spaceBeforeUnit = "default";
-    };
-    percent = {
-      type = [ "num" "num-color" ];
-      ndigits = 0;
-      color = {
-        green = "32";
-        yellow = "93";
-        red = "91";
-      };
-      spaceBeforeUnit = "default";
-      width = 0;
-    };
-    bar = {
-      char = {
-        elapsed = "■";
-        total = "-";
-      };
-      border = {
-        left = "[ ";
-        right = " ]";
-        leftElapsed = "";
-        rightElapsed = "";
-      };
-      color = {
-        elapsed = "auto";
-        total = "97";
-        border = "97";
-      };
-      width = 10;
-    };
-    fraction = {
-      ndigits = 2;
-    };
-    noBuffer = false;
-    key = {
-      width = 0;
-      type = "string";
-      paddingLeft = 0;
-    };
-    freq = {
-      ndigits = 2;
-      spaceBeforeUnit = "default";
-    };
-    constants = [];
-  };
-
-  general = {
-    thread = true;
-    processingTimeout = 5000;
-    detectVersion = true;
-    playerName = "";
-    dsForceDrm = false;
-  };
-
-  modules = [
-    {
-      type = "title";
-      key = " ";
-      keyIcon = "";
-      fqdn = false;
-      color = {
-        user = "";
-        at = "";
-        host = "";
-      };
-    }
-    {
-      type = "separator";
-      string = "-";
-      outputColor = "";
-      times = 0;
-    }
-    {
-      type = "os";
-      keyIcon = "";
-    }
-    {
-      type = "host";
-      keyIcon = "󰌢";
-    }
-    {
-      type = "kernel";
-      keyIcon = "";
-    }
-    {
-      type = "uptime";
-      keyIcon = "";
-    }
-    {
-      type = "shell";
-      keyIcon = "";
-    }
-    {
-      type = "wm";
-      keyIcon = "";
-      detectPlugin = true;
-    }
-    {
-      type = "terminal";
-      keyIcon = "";
-    }
-    {
-      type = "cpu";
-      keyIcon = "";
-      temp = false;
-      showPeCoreCount = false;
-    }
-    {
-      type = "memory";
-      keyIcon = "";
-      percent = {
-        green = 50;
-        yellow = 80;
-        type = 0;
-      };
-    }
-    {
-      type = "battery";
-      keyIcon = "";
-      temp = false;
-      percent = {
-        green = 50;
-        yellow = 20;
-        type = 0;
-      };
-    }
-    "break"
-    {
-      type = "colors";
-      key = " ";
-      keyIcon = "";
-      symbol = "circle";
-      paddingLeft = 0;
-      block = {
-        width = 3;
-        range = [ 0 15 ];
-      };
-    }
-  ];
-};
 }
