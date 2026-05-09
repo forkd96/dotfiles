@@ -11,7 +11,7 @@
       layer-shell = true;
     
       control-center-width = 390;
-      control-center-height = 750;
+      control-center-height = 800;
       control-center-margin-top = 10;
       control-center-margin-bottom = 10;
       control-center-margin-right = 10;
@@ -142,7 +142,7 @@
       }
     
       .control-center .notification-row .notification-background {
-          background-color: @cc_bg_alt;
+          background-color: transparent;
           border-radius: 12px;
           margin-top: 6px;
       }
@@ -281,7 +281,7 @@
     
       scrollbar {
           background: transparent;
-          min-width: 8px;
+          min-width: 1px;
           margin: 6px 2px 6px 0;
       }
     
@@ -292,14 +292,20 @@
       scrollbar slider {
           background-color: alpha(@cc_fg_muted, 0.35);
           border-radius: 999px;
-          min-width: 4px;
-          min-height: 36px;
+          min-width: 1px;
+          min-height: 16px;
       }
     
       scrollbar slider:hover {
           background-color: alpha(@cc_fg_muted, 0.55);
       }
-    
+
+      .control-center scrolledwindow {
+          background: transparent;
+          border: none;
+          box-shadow: none;
+      }
+
       .widget-buttons-grid {
           font-size: 1rem;
           padding: 14px 14px 8px;

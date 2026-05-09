@@ -132,6 +132,9 @@
     kdePackages.breeze
     kdePackages.breeze-icons
     kdePackages.kde-cli-tools
+
+    pulseaudio # provides pactl
+    libnotify
   ];
 
   # *** all the mostly static stuff i change once in a blue moon ***
