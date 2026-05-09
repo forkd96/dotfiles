@@ -1,12 +1,4 @@
-{ config, pkgs, ... }:
-let
-  logo = pkgs.fetchurl {
-    url = "https://codeberg.org/undrrdawg/undrrfiles/raw/branch/main/assets/rice/fetch-logo.png";
-    sha256 = "sha256-IricY1nuuSIwWBSS/ZbSJ/rK7z+Ob9Q7+wmJMLJxOBw=";
-  };
-in
-{
-  home.file.".config/assets/fetch-logo.png".source = logo;
+{ config, pkgs, ... }: {
   programs.fastfetch = {
     enable = true;
     settings = {

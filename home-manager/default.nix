@@ -4,6 +4,19 @@
   home.homeDirectory = "/home/forkd";
   home.stateVersion = "25.11";
 
+  gtk = {
+    enable = true;
+    theme = {
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
+    };
+    gtk3.extraCss = "@import 'colors.css';";
+    gtk4.extraCss = "@import 'colors.css';";
+  };
+
+  home.file.".local/share/themes/adw-gtk3".source = "${pkgs.adw-gtk3}/share/themes/adw-gtk3";
+  home.file.".local/share/themes/adw-gtk3-dark".source = "${pkgs.adw-gtk3}/share/themes/adw-gtk3-dark";
+
   home.pointerCursor = 
     let 
       getFrom = url: hash: name: {

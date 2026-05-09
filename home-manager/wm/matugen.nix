@@ -69,6 +69,15 @@
       input_path = "${config.xdg.configHome}/matugen/templates/qtct-colors.conf"
       output_path = "${config.xdg.configHome}/qt6ct/colors/matugen.conf"
 
+      [templates.gtk3]
+      input_path = '${config.xdg.configHome}/matugen/templates/gtk-colors.css'
+      output_path = '${config.xdg.configHome}/gtk-3.0/colors.css'
+      post_hook = 'thunar -q; gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+      
+      [templates.gtk4]
+      input_path = '${config.xdg.configHome}/matugen/templates/gtk-colors.css'
+      output_path = '${config.xdg.configHome}/gtk-4.0/colors.css'
+
       [templates.niri]
       input_path = "${config.xdg.configHome}/matugen/templates/niri-colors.kdl"
       output_path = "${config.xdg.configHome}/niri/colors.kdl"
@@ -123,6 +132,31 @@
           "color15": "{{colors.on_background.default.hex}}"
         }
       }
+    '';
+
+    "matugen/templates/gtk-colors.css".text = ''
+      /*
+      * GTK Colors
+      * Generated with Matugen
+      */
+      
+      @define-color accent_color {{colors.primary_fixed_dim.default.hex}};
+      @define-color accent_fg_color {{colors.on_primary_fixed.default.hex}};
+      @define-color accent_bg_color {{colors.primary_fixed_dim.default.hex}};
+      @define-color window_bg_color {{colors.surface_dim.default.hex}};
+      @define-color window_fg_color {{colors.on_surface.default.hex}};
+      @define-color headerbar_bg_color {{colors.surface_dim.default.hex}};
+      @define-color headerbar_fg_color {{colors.on_surface.default.hex}};
+      @define-color popover_bg_color {{colors.surface_dim.default.hex}};
+      @define-color popover_fg_color {{colors.on_surface.default.hex}};
+      @define-color view_bg_color {{colors.surface.default.hex}};
+      @define-color view_fg_color {{colors.on_surface.default.hex}};
+      @define-color card_bg_color {{colors.surface.default.hex}};
+      @define-color card_fg_color {{colors.on_surface.default.hex}};
+      @define-color sidebar_bg_color @window_bg_color;
+      @define-color sidebar_fg_color @window_fg_color;
+      @define-color sidebar_border_color @window_bg_color;
+      @define-color sidebar_backdrop_color @window_bg_color;
     '';
 
     "matugen/templates/btop.theme".text = ''
@@ -548,11 +582,8 @@
       [Appearance]
       color_scheme_path=${config.xdg.configHome}/qt5ct/colors/matugen.conf
       custom_palette=true
-      color_scheme_path=~/.local/share/color-schemes/Matugen.colors
-      custom_palette=true
       icon_theme=breeze
-      style=Breeze
+      style=Fusion
     '';
-
   };
 }

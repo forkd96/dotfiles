@@ -148,11 +148,11 @@
       }
     
       .notification {
-          background-color: @cc_bg_alt;
+          background-color: @cc_bg;
           color: @cc_fg;
           border-radius: 12px;
-          border: 1px solid alpha(@cc_border, 0.4);
-          margin: 0;
+          border: 2px solid alpha(@cc_border, 0.4);
+          margin: 16px;
       }
     
       .notification > *:last-child > * {

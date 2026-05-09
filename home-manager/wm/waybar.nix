@@ -134,13 +134,17 @@
       }
 
       window#waybar > box {
+        margin: 0;
+        padding: 0;
         background-color: @secondary_container;
         border-radius: 24px;
+        box-shadow: inset 0 0 0 2px @outline;
       }
 
       window#waybar {
         font-size: 16px;
         background-color: transparent;
+        border-radius: 24px;
       }
 
       .modules-left {

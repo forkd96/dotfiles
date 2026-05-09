@@ -36,6 +36,8 @@
       fluffychat
 
       catppuccin-qt5ct
+      glib
+      adw-gtk3
       
       kid3
     ];
