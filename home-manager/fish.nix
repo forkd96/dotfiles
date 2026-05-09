@@ -6,6 +6,7 @@
     fastfetch
     set fish_greeting ""
     set -gx TERM xterm-256color 
+    set EDITOR nvim
      '';
     shellAbbrs = {
       nt = "nmtui";
@@ -23,6 +24,7 @@
     };
     functions = {
       mkcd = "mkdir -p $argv && cd $argv";
+      icat = "kitten icat $argv";
     };
       plugins = [
     {

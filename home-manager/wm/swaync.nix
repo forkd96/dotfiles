@@ -136,6 +136,7 @@
       .control-center {
           background-color: @cc_bg;
           border-radius: 24px;
+	  border: 2px solid @outline;
           padding: 8px;
           box-shadow: 0 4px 16px alpha(@shadow, 0.3);
       }

@@ -141,7 +141,7 @@
     }
 
     window-rule {
-        geometry-corner-radius 6
+        geometry-corner-radius 12
         clip-to-geometry true
     }
 
@@ -165,7 +165,7 @@
         Mod+Return { spawn "kitty"; }
         Alt+Shift+T { spawn "kitty"; }
 
-        Mod+BackSlash { spawn "thunar"; }
+        Mod+BackSlash { spawn "kitty" "yazi"; }
 
         Alt+Space { spawn "kitty" "--app-id" "'otter'" "otter-launcher"; }
 
