@@ -4,9 +4,10 @@
 <details>
   <summary>screenshots</summary>
   <br>
-  <img src="assets/light.png">
-  <img src="assets/everforest-dark.png">
-  <img src="assets/catppuccin-dark.png">
+  <img src="assets/screenshots/light.png">
+  <img src "assets/screenshots/red.png">
+  <img src="assets/screenshots/everforest.png">
+  <img src="assets/screenshots/catppuccin.png">
 </details>
 
 be aware that this rice is a bit incomplete so you might encounter some styling bugs, i have no idea how to fix some of them
