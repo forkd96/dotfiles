@@ -152,6 +152,13 @@
         default-window-height { fixed 400; }
     }
 
+    window-rule {
+        match app-id="matugen-picker"
+        open-floating true
+        default-column-width { fixed 1200; }
+        default-window-height { fixed 800; }
+    }
+
     binds {
         Mod+Shift+E { quit; }
         Ctrl+Alt+Delete { quit; }
@@ -163,19 +170,16 @@
         Print { screenshot; }
 
         Mod+Return { spawn "kitty"; }
-        Alt+Shift+T { spawn "kitty"; }
-
         Mod+BackSlash { spawn "kitty" "yazi"; }
-
         Alt+Space { spawn "kitty" "--app-id" "'otter'" "otter-launcher"; }
 
-        Ctrl+Alt+Space { spawn "matuwall"; }
+	// !! the long ass keybinds are just capslock, i rebound it to that combo in my nixos config !!
+	Ctrl+Alt+Shift+Super+F { spawn "kitty"; }
+	Ctrl+Alt+Shift+Super+C { spawn "kitty" "--app-id" "'otter'" "otter-launcher"; } 
+	Ctrl+Alt+Shift+Super+D { spawn "sh" "-c" "kitty --app-id matugen-picker yazi ~/Pictures/Wallpapers"; }
+        Ctrl+Alt+Shift+Super+E { spawn "kitty" "yazi"; } 
 
-        Mod+Shift+Period {
-            spawn "rofi" "-show" "emoji"
-        }
-
-        Mod+Slash { spawn "rofi" "-show" "calc"; }
+        Ctrl+Alt+Shift+Super+W { switch-layout "next"; } 
 
         Mod+Space {
             switch-layout "next"

@@ -320,8 +320,9 @@
           padding: 6px;
           margin: 0 3px;
           transition: background 0.2s ease;
+          border: 1px solid @outline_variant;
       }
-    
+
       .widget-buttons-grid > flowbox > flowboxchild > button:hover {
           background: alpha(@on_surface, 0.08);
       }

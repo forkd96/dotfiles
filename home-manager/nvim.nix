@@ -10,6 +10,14 @@
       nvim-cmp.enable = true;
     };
 
+    keymaps = [
+      {
+        mode = "v";
+	key = "<C-S-M-D-q>";
+        action = ''"+y'';
+      }
+    ];
+
      extraPlugins = with pkgs.vimPlugins; [
       mini-pairs
       base16-nvim

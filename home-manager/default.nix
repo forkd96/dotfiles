@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  imports = [ ./fish.nix ./kitty.nix ./nvim.nix ./wm/niri.nix ./wm/waybar.nix ./apps.nix ./fastfetch.nix ./wm/otter-launcher.nix ./wm/matugen.nix ./wm/swaync.nix ./vesktop.nix ];
+{ pkgs, config, lib, ... }: {
+  imports = [ ./fish.nix ./kitty.nix ./nvim.nix ./wm/niri.nix ./wm/waybar.nix ./apps.nix ./fastfetch.nix ./wm/otter-launcher.nix ./wm/matugen.nix ./wm/swaync.nix ./vesktop.nix ./yazi.nix ];
   home.username = "forkd";
   home.homeDirectory = "/home/forkd";
   home.stateVersion = "25.11";
@@ -10,8 +10,14 @@
       name = "adw-gtk3-dark";
       package = pkgs.adw-gtk3;
     };
+    gtk4.theme = config.gtk.theme;
     gtk3.extraCss = "@import 'colors.css';";
     gtk4.extraCss = "@import 'colors.css';";
+  };
+
+  services.gnome-keyring = {
+    enable = true;
+    components = [ "secrets" ];
   };
 
   home.file.".local/share/themes/adw-gtk3".source = "${pkgs.adw-gtk3}/share/themes/adw-gtk3";

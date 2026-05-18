@@ -2,33 +2,33 @@
   description = "stuff";
 
   inputs = {
-    # *** nixpkgs ***
+    # --- nixpkgs ---
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-25.11";
 
-    # *** HM *** 
+    # --- HM --- 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # *** nixvim ***
+    # --- nixvim ---
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # *** NUR ***
+    # --- NUR ---
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # *** flake-parts for otter *** 
+    # --- flake-parts for otter --- 
     systems.url = "github:nix-systems/default-linux";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    # *** otter-launcher *** 
+    # --- otter-launcher --- 
     otter-launcher = {
       url = "github:kuokuo123/otter-launcher";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,7 +37,7 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    # *** matugen ***
+    # --- matugen ---
     matugen = {
       url = "github:/InioX/Matugen";
     };

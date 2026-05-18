@@ -2,7 +2,7 @@
 
 {
 
-  # *** helper script ***
+  # --- helper script ---
   home.file."${config.home.homeDirectory}/.local/bin/matugen-mode-sync" = {
     executable = true;
     text = ''
@@ -16,7 +16,7 @@
 
   xdg.configFile = {
 
-    # *** matugen config ***
+    # --- matugen config ---
 
     "matugen/config.toml".text = ''
       [config.wallpaper]
@@ -86,7 +86,7 @@
       [templates.niri]
       input_path = "${config.xdg.configHome}/matugen/templates/niri-colors.kdl"
       output_path = "${config.xdg.configHome}/niri/colors.kdl"
-      post_hook = "niri msg action load-config-file"
+      post_hook = "niri msg action load-config-file &"
 
       [templates.cava]
       input_path = "${config.xdg.configHome}/matugen/templates/cava-colors.ini"
@@ -98,7 +98,7 @@
       output_path = '${config.xdg.configHome}/wlogout/colors.css'
     '';
 
-    # *** templates ***   
+    # --- templates ---   
 
     "matugen/templates/system-theme.txt".text = ''
       {{ mode }}

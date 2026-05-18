@@ -3,6 +3,7 @@
 { 
   home = {
     packages = with pkgs; [
+      # --- required for rice ---
       inputs.matugen.packages.${system}.default
       pywalfox-native
       kitty
@@ -12,17 +13,20 @@
       awww
       fsel
       kdePackages.gwenview
-
       yazi
+      glib
+      adw-gtk3 
+
+      # --- deps for some yazi features - optional but recommended ---
       exiftool
       mediainfo
 
-      prismlauncher
+      # --- personal apps i use, you can remove these ---
+      inkscape
       easyeffects
       kdePackages.elisa
       kdePackages.kdeconnect-kde
       librewolf
-      heroic
       obs-studio
       qbittorrent
       vscodium
@@ -35,11 +39,10 @@
       ayugram-desktop
       fluffychat
 
-      catppuccin-qt5ct
-      glib
-      adw-gtk3
-      
-      kid3
+      osu-lazer-bin
+      prismlauncher
+      heroic
+      r2modman
     ];
   };
 }

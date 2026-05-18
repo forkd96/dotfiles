@@ -1,11 +1,13 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
 {
   imports =
     [
       ./hardware-configuration.nix
     ];
 
+  # --- essential options ---
+
+  # configure your firewall here if you need to
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # networking.firewall.enable = true;
@@ -15,11 +17,7 @@
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-
+  # user setup, change "forkd" to your name
   users.users.forkd = {
     isNormalUser = true;
     description = "fork";
@@ -27,61 +25,84 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
+  # --- opinionated configs ---
+  # these are options or programs that are useful for myself but may not be for others,
+  # feel free to remove or reconfigure these
+
+  # rebinds capslock to hyper (as an extra modifier, not used on modern keyboards) if held and escape if tapped
+  services.keyd = {
+    enable = true;
+    keyboards.default.settings = {
+      main.capslock = "overload(capslock_layer, esc)";
+      "capslock_layer:C-S-A-M" = {};
+    };
+  };
+
+  # regreet (greetd) config, swap with your preferred display manager if you want to
+  programs.regreet = {
+    enable = true;
+    theme.name = "adw-gtk3-dark";
+    cursorTheme.name = "Bibata";
+    settings = {
+      background.path = "/etc/greetd/Wallpapers/Ultrakill/strays_and_v1.png";
+      appearance.greeting_msg = "hello dawg. touch grass sometime";
+      GTK.css_path = "/home/forkd/.config/gtk-4.0/gtk.css";
+    };
+    font = {
+      name = "Poppins";
+      size = 16;
+    };
+  };
+
+  # navidrome, a music server. you'll probably not need this at all
+  services.navidrome = {
+    enable = true;
+    settings = {
+      MusicFolder = "/opt/navidrome/music";
+      PlaylistsPath = "/opt/navidrome/playlists";
+    };
+  };
+
+  # enable zram, adjust the memory percentage to your liking. i use 100 because i'm constantly low on memory
   zramSwap = {
     enable = true;
     algorithm = "lz4";
     memoryPercent = 100;
   };
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  nixpkgs.config.allowUnfree = true;
-  
-  nixpkgs.config.permittedInsecurePackages = [
-    "olm-3.2.16"
-  ];
+  # pretty self explanatory
+  programs.steam = { enable = true; remotePlay.openFirewall = true; };
+  programs.amnezia-vpn.enable = true;
 
+  # --- nix specific options ---
+
+  # enable flakes
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  # allow proprietary apps to be installed
+  nixpkgs.config.allowUnfree = true;
+
+  # enable NH the nix cli helper
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep 3";
+    flake = "/home/forkd/dotfiles";
+  };
+  
+  # automatically run garbage collector weekly
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 7d";
+    options = "--delete-older-than 3d";
   };
 
-  # services.tailscale.enable = true;
-  programs.amnezia-vpn.enable = true;
-  services.flatpak.enable = true;
-
-
-  services.navidrome = {
-    enable = true;
-    settings = {
-      MusicFolder = "/opt/navidrome/music";
-      PlaylistsPath = "/opt/navidrome/playlists";
-      EnableSharing = true;
-    };
-  };
-
-#  services.minecraft-server = {
-#    enable = true;
-#    eula = true;
-#    openFirewall = true;
-#    package = pkgs.papermcServers.papermc-1_21_11;
-#    serverProperties = {
-#      difficulty = 2;
-#      gamemode = 0;
-#      max-players = 3;
-#      enable-rcon = true;
-#      "rcon.password" = "fuckinghell";
-#      white-list = true;
-#      motd = "super cool local server";
-#    };
-#    whitelist = {
-#      forkd_owo = "9993ba3a-9b23-4029-bcd5-7d15a978ec71";
-#    };
-#  };
-
-  programs.steam = { enable = true; remotePlay.openFirewall = true; };
+  # --- packages ---
+  # almost all of these are pretty much needed or outright essential,
+  # but still feel free to delete or swap some ones (like neovim with your preferred editor) out
   programs.fish.enable = true;
   programs.niri.enable = true;
+  services.flatpak.enable = true;
   programs.firefox.enable = true;
 
   fonts = {
@@ -98,6 +119,7 @@
     playerctl
     xwayland-satellite
     polkit_gnome
+    cage
     dex
     python3
     neovim
@@ -137,7 +159,7 @@
     libnotify
   ];
 
-  # *** all the mostly static stuff i change once in a blue moon ***
+  # --- all the mostly static stuff i change once in a blue moon ---
 
   boot.loader.grub = {
     enable = true;
@@ -192,7 +214,27 @@
 
   services.libinput.enable = true;
 
-  # --- ---
+#  services.minecraft-server = {
+#    enable = true;
+#    eula = true;
+#    openFirewall = true;
+#    package = pkgs.papermcServers.papermc-1_21_11;
+#    serverProperties = {
+#      difficulty = 2;
+#      gamemode = 0;
+#      max-players = 3;
+#      enable-rcon = true;
+#      "rcon.password" = "fuckinghell";
+#      white-list = true;
+#      motd = "super cool local server";
+#    };
+#    whitelist = {
+#      forkd_owo = "9993ba3a-9b23-4029-bcd5-7d15a978ec71";
+#    };
+#  };
+
+
+  # --- state version ---
 
   system.stateVersion = "25.11";
 }
